@@ -882,6 +882,42 @@
       box-shadow: var(--glow-c);
     }
 
+    /* ── GALLERY (masonry collage) ──────────────────────── */
+    .gallery-masonry {
+      column-count: 3; column-gap: 14px; margin-top: 44px;
+    }
+    .gal {
+      position: relative; display: block; break-inside: avoid;
+      margin-bottom: 14px; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--bg-card);
+    }
+    .gal img {
+      width: 100%; display: block;
+      transition: transform 600ms cubic-bezier(.2,.6,.2,1);
+    }
+    .gal:hover img { transform: scale(1.05); }
+    .gal-cap {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 18px 20px; z-index: 2;
+      background: linear-gradient(transparent, rgba(5,5,5,.88));
+    }
+    .gal-cap-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .02em; line-height: 1.05;
+    }
+    .gal-cap-sub { font-size: 12px; color: rgba(240,242,245,.72); margin-top: 3px; }
+    .gal-badge {
+      position: absolute; top: 14px; left: 14px; z-index: 3;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--pink); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px;
+    }
+    @media (max-width: 900px) { .gallery-masonry { column-count: 2; } }
+    @media (max-width: 560px) { .gallery-masonry { column-count: 1; } }
+
     /* ── WHY BENTO ──────────────────────────────────────── */
     .why-bento {
       display: grid;
@@ -1124,6 +1160,7 @@
 
     <div class="nav-links">
       <a href="#directions">Напрямки</a>
+      <a href="#gallery">Зал</a>
       <a href="#trainers">Тренери</a>
       <a href="#prices">Ціни</a>
       <a href="#schedule">Розклад</a>
@@ -1144,6 +1181,7 @@
 
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Мобільне меню">
   <a href="#directions" onclick="closeMobile()">Напрямки</a>
+  <a href="#gallery" onclick="closeMobile()">Зал</a>
   <a href="#trainers" onclick="closeMobile()">Тренери</a>
   <a href="#prices" onclick="closeMobile()">Ціни</a>
   <a href="#schedule" onclick="closeMobile()">Розклад</a>
@@ -1270,6 +1308,71 @@
         <div class="dir-name" style="color:#FF2070;">Спільнота</div>
         <p class="dir-desc">Opium Fitness — це більше ніж зал. Твоє <strong style="color:var(--text);">healthy community</strong> де мотивують одне одного кожного дня.</p>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ GALLERY -->
+<section class="section-gap" id="gallery" aria-label="Простір залу">
+  <div class="container">
+    <div class="label">Наш простір</div>
+    <h2 class="section-title">Зал<br/><span class="c">Opium Fitness</span></h2>
+    <p style="color:var(--muted);font-size:15px;max-width:520px;margin:14px 0 0;">Сучасний простір, що нещодавно розширився — більше зон, більше обладнання, більше можливостей для будь-якого напрямку.</p>
+
+    <div class="gallery-masonry">
+
+      <figure class="gal">
+        <span class="gal-badge">Розширення 2025</span>
+        <img src="assets/gallery/hall-wide.jpg" alt="Оновлений розширений простір тренажерного залу Opium Fitness" loading="lazy" />
+        <figcaption class="gal-cap">
+          <div class="gal-cap-title">Оновлений простір</div>
+          <div class="gal-cap-sub">Більше зон та обладнання після розширення</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/racks.jpg" alt="Зона силових стійок Opium Fitness" loading="lazy" />
+        <figcaption class="gal-cap">
+          <div class="gal-cap-title">Силова зона</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/branding.jpg" alt="Брендована зона OPIUM" loading="lazy" />
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/cardio.jpg" alt="Кардіо-зона залу" loading="lazy" />
+        <figcaption class="gal-cap">
+          <div class="gal-cap-title">Кардіо-зона</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/boxing.jpg" alt="Зона боксу з боксерським мішком" loading="lazy" />
+        <figcaption class="gal-cap">
+          <div class="gal-cap-title">Зона боксу</div>
+        </figcaption>
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/dumbbells.jpg" alt="Стійка зі штангами та гантелями" loading="lazy" />
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/legpress.jpg" alt="Силові тренажери залу" loading="lazy" />
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/motivation.jpg" alt="Атмосфера тренувань в Opium Fitness" loading="lazy" />
+      </figure>
+
+      <figure class="gal">
+        <img src="assets/gallery/lightbox.jpg" alt="Брендований простір OPIUM" loading="lazy" />
+      </figure>
 
     </div>
   </div>
@@ -1848,6 +1951,7 @@
       </div>
       <nav class="footer-links" aria-label="Footer навігація">
         <a href="#directions">Напрямки</a>
+        <a href="#gallery">Зал</a>
         <a href="#trainers">Тренери</a>
         <a href="#prices">Ціни</a>
         <a href="#schedule">Розклад</a>
@@ -2023,7 +2127,7 @@
   }, { threshold: 0.08 });
 
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.dir-card, .bento, .sch-card, .price-block, .crossfit-card, .price-tiers, .free-banner').forEach(el => {
+    document.querySelectorAll('.dir-card, .bento, .sch-card, .price-block, .crossfit-card, .price-tiers, .free-banner, .gal').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(18px)';
       el.style.transition = 'opacity 380ms ease, transform 380ms ease';
