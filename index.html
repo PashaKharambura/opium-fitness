@@ -178,8 +178,11 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 55% 55% at 68% 45%, rgba(92,224,216,.07) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 40% at 15% 75%, rgba(255,32,112,.06) 0%, transparent 65%);
+        radial-gradient(ellipse 55% 55% at 68% 45%, rgba(92,224,216,.10) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 40% at 15% 75%, rgba(255,32,112,.08) 0%, transparent 65%),
+        linear-gradient(to right, rgba(10,10,10,.97) 0%, rgba(10,10,10,.88) 40%, rgba(10,10,10,.72) 100%),
+        linear-gradient(rgba(10,10,10,.55), rgba(10,10,10,.88)),
+        url('assets/gallery/cardio.jpg') center/cover no-repeat;
     }
     .hero-bg::before {
       content: '';
