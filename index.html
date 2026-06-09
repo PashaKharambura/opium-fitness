@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Opium Fitness — твій спортивний клуб у Львові. CrossFit, бокс, Muay Thai, стретчинг, персональні тренування. Приєднуйся до спільноти." />
+  <title>Opium Fitness — Спортзал у Львові</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:       #0A0A0A;
+      --bg-card:  #111111;
+      --bg-card2: #161616;
+      --cyan:     #5CE0D8;
+      --cyan-d:   #3ECFC7;
+      --pink:     #FF2070;
+      --text:     #F0F2F5;
+      --muted:    #6B7280;
+      --border:   rgba(92,224,216,.12);
+      --glow-c:   0 0 28px rgba(92,224,216,.3);
+      --glow-p:   0 0 28px rgba(255,32,112,.3);
+      --r:        12px;
+      --nav-h:    68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ── UTILS ──────────────────────────────────────────── */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-gap { padding: 96px 0; }
+    .label {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 900;
+      line-height: 1.0;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+    }
+    .section-title .c { color: var(--cyan); }
+    .section-title .p { color: var(--pink); }
+
+    .neon-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--cyan) 35%, var(--pink) 65%, transparent 100%);
+      opacity: .4;
+      position: relative;
+    }
+    .neon-divider::after {
+      content: '';
+      position: absolute;
+      inset: -3px 5% ;
+      background: inherit;
+      filter: blur(8px);
+      opacity: .5;
+    }
+
+    /* ── BUTTONS ────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      transition: all 200ms ease; cursor: pointer;
+    }
+    .btn-primary { background: var(--cyan); color: #0A0A0A; box-shadow: var(--glow-c); }
+    .btn-primary:hover { background: #74e8e0; box-shadow: 0 0 40px rgba(92,224,216,.5); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid rgba(240,242,245,.18); }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-pink { background: var(--pink); color: #fff; box-shadow: var(--glow-p); }
+    .btn-pink:hover { background: #ff3d82; transform: translateY(-1px); }
+    .btn-insta {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+    }
+    .btn-insta:hover { opacity: .9; transform: translateY(-1px); }
+
+    /* ── NAV ────────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 10px; left: 10px; right: 10px; z-index: 50;
+      background: rgba(10,10,10,.88);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      width: 100%; padding: 0 20px;
+    }
+    /* LOGO SVG mark + wordmark */
+    .nav-logo-wrap {
+      display: flex; align-items: center; gap: 10px;
+      cursor: pointer;
+    }
+    .nav-logo-mark { width: 34px; height: 34px; flex-shrink: 0; }
+    .nav-logo-word {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px; font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); transition: color 200ms;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      padding: 8px; cursor: pointer;
+    }
+    .nav-burger span { width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all 200ms; }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: calc(var(--nav-h) + 18px);
+      left: 10px; right: 10px; z-index: 49;
+      background: rgba(10,10,10,.97);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; flex-direction: column; gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--muted); padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: color 200ms;
+    }
+    .mobile-menu a:last-of-type { border: none; }
+    .mobile-menu a:hover { color: var(--cyan); }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      padding-top: calc(var(--nav-h) + 60px);
+      padding-bottom: 80px;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 68% 45%, rgba(92,224,216,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 40% at 15% 75%, rgba(255,32,112,.06) 0%, transparent 65%);
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(92,224,216,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(92,224,216,.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(92,224,216,.08);
+      border: 1px solid rgba(92,224,216,.2);
+      border-radius: 100px; padding: 6px 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 22px;
+    }
+    .hero-tag::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(52px, 7.5vw, 96px);
+      font-weight: 900; line-height: .96;
+      text-transform: uppercase; letter-spacing: -.01em;
+      margin-bottom: 24px;
+    }
+    .hero-title .c { color: var(--cyan); }
+    .hero-title .p { color: var(--pink); }
+
+    .hero-desc {
+      font-size: 16px; color: var(--muted);
+      line-height: 1.75; max-width: 480px; margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 44px; }
+    .hero-stats {
+      display: flex; gap: 32px;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 34px; font-weight: 900; color: var(--cyan); line-height: 1;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+    .hero-card-big {
+      width: 100%; max-width: 440px; aspect-ratio: 3/4;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden; position: relative;
+      display: flex; align-items: flex-end;
+    }
+    .hero-placeholder {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #111, #161616);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+    }
+    .hero-placeholder-text {
+      color: rgba(92,224,216,.25);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .hero-overlay {
+      position: relative; z-index: 2; width: 100%; padding: 24px;
+      background: linear-gradient(to top, rgba(10,10,10,.95) 0%, transparent 100%);
+    }
+    .hero-overlay-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 4px;
+    }
+    .hero-overlay-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px; font-weight: 900; text-transform: uppercase;
+    }
+    .hero-badge {
+      position: absolute; top: 20px; right: -20px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 12px 16px;
+      display: flex; flex-direction: column; align-items: center;
+      box-shadow: var(--glow-c);
+    }
+    .hero-badge-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px; font-weight: 900; color: var(--cyan); line-height: 1;
+    }
+    .hero-badge-txt { font-size: 10px; color: var(--muted); text-align: center; margin-top: 3px; }
+
+    /* ── DIRECTIONS ─────────────────────────────────────── */
+    .dir-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 44px;
+    }
+    .dir-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px 22px;
+      position: relative; overflow: hidden;
+      transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+      cursor: default;
+    }
+    .dir-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+      transform: scaleX(0); transform-origin: left; transition: transform 300ms ease;
+    }
+    .dir-card:hover { transform: translateY(-4px); border-color: rgba(92,224,216,.28); box-shadow: 0 14px 44px rgba(0,0,0,.45); }
+    .dir-card:hover::before { transform: scaleX(1); }
+    .dir-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(92,224,216,.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .dir-icon svg { width: 22px; height: 22px; color: var(--cyan); }
+    .dir-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .02em; margin-bottom: 8px;
+    }
+    .dir-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── TRAINERS ────────────────────────────────────────── */
+    .trainers-scroll-wrap {
+      position: relative; margin-top: 44px;
+    }
+    .trainers-scroll {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      padding-bottom: 16px; cursor: grab;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(92,224,216,.25) transparent;
+    }
+    .trainers-scroll:active { cursor: grabbing; }
+    .trainers-scroll::-webkit-scrollbar { height: 4px; }
+    .trainers-scroll::-webkit-scrollbar-track { background: transparent; }
+    .trainers-scroll::-webkit-scrollbar-thumb { background: rgba(92,224,216,.25); border-radius: 4px; }
+
+    .trainer-card {
+      flex: 0 0 260px; scroll-snap-align: start;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: transform 200ms ease, border-color 200ms;
+    }
+    .trainer-card:hover { transform: translateY(-4px); border-color: rgba(92,224,216,.3); }
+    .trainer-photo {
+      width: 100%; height: 280px;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .trainer-info { padding: 18px 18px 20px; }
+    .trainer-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 19px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .03em;
+      margin-bottom: 6px; color: var(--text);
+    }
+    .trainer-bio { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+    .trainer-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .trainer-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      background: rgba(92,224,216,.08);
+      border: 1px solid rgba(92,224,216,.15);
+      color: var(--cyan); padding: 3px 9px; border-radius: 6px;
+    }
+
+    /* Scroll arrows */
+    .scroll-btn {
+      position: absolute; top: calc(140px - 20px);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(10,10,10,.9); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 5;
+      transition: border-color 200ms, box-shadow 200ms;
+    }
+    .scroll-btn:hover { border-color: var(--cyan); box-shadow: var(--glow-c); }
+    .scroll-btn svg { width: 18px; height: 18px; color: var(--text); }
+    .scroll-btn-left { left: -20px; }
+    .scroll-btn-right { right: -20px; }
+    @media (max-width: 768px) { .scroll-btn { display: none; } }
+
+    /* ── WHY ─────────────────────────────────────────────── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 14px; margin-top: 44px;
+    }
+    .why-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 28px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color 200ms, box-shadow 200ms;
+    }
+    .why-card:hover { border-color: rgba(92,224,216,.22); box-shadow: 0 8px 32px rgba(0,0,0,.3); }
+    .why-card.feat {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(92,224,216,.06), rgba(255,32,112,.04));
+      border-color: rgba(92,224,216,.18);
+    }
+    .why-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 38px; font-weight: 900; color: var(--cyan);
+      opacity: .25; line-height: 1; min-width: 44px;
+    }
+    .why-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .03em; margin-bottom: 6px;
+    }
+    .why-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── PRICES ──────────────────────────────────────────── */
+    .prices-wrap { margin-top: 44px; }
+    .prices-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 14px; margin-bottom: 32px;
+    }
+    .price-block {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+    }
+    .price-block-header {
+      padding: 16px 22px;
+      background: rgba(92,224,216,.05);
+      border-bottom: 1px solid var(--border);
+    }
+    .price-block-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--cyan);
+    }
+    .price-row {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      transition: background 150ms;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-row:hover { background: rgba(92,224,216,.03); }
+    .price-item-name { font-size: 14px; color: var(--text); line-height: 1.3; }
+    .price-item-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px; font-weight: 800;
+      color: var(--cyan); white-space: nowrap; padding-left: 16px;
+    }
+    .price-item-val span { font-size: 12px; font-weight: 600; opacity: .7; }
+
+    /* Subscription cards */
+    .subs-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .sub-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px 22px;
+      display: flex; flex-direction: column; position: relative;
+      transition: transform 250ms, box-shadow 250ms;
+    }
+    .sub-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(0,0,0,.4); }
+    .sub-card.pop { border-color: var(--cyan); box-shadow: var(--glow-c); }
+    .pop-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--cyan); color: #0A0A0A;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 3px 12px; border-radius: 100px; white-space: nowrap;
+    }
+    .sub-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .sub-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 44px; font-weight: 900; line-height: 1; margin-bottom: 4px;
+    }
+    .sub-price sup { font-size: 20px; vertical-align: super; }
+    .sub-period { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+    .sub-features { list-style: none; flex: 1; display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
+    .sub-features li { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--muted); }
+    .sub-features li svg { width: 14px; height: 14px; color: var(--cyan); flex-shrink: 0; }
+    .sub-btn {
+      width: 100%; padding: 12px; border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; cursor: pointer; transition: all 200ms;
+      border: 1.5px solid rgba(240,242,245,.14); color: var(--text); background: transparent;
+    }
+    .sub-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .sub-btn.p { background: var(--cyan); border-color: var(--cyan); color: #0A0A0A; }
+    .sub-btn.p:hover { background: #74e8e0; }
+
+    /* ── SCHEDULE ────────────────────────────────────────── */
+    .sch-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px; margin-top: 44px;
+    }
+    .sch-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 24px;
+    }
+    .sch-day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 10px;
+    }
+    .sch-time {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px; font-weight: 800; line-height: 1.2;
+    }
+    .sch-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+    /* ── FORM ────────────────────────────────────────────── */
+    .form-section {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+    }
+    .form-inner { display: grid; grid-template-columns: 1fr 1fr; }
+    .form-left {
+      padding: 60px 52px;
+      background: linear-gradient(135deg, rgba(92,224,216,.05), rgba(255,32,112,.03));
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .form-right { padding: 60px 52px; }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; background: var(--bg);
+      border: 1px solid rgba(240,242,245,.08);
+      border-radius: 8px; padding: 12px 15px;
+      color: var(--text); font-family: 'Barlow', sans-serif;
+      font-size: 14px; transition: border-color 200ms, box-shadow 200ms;
+      appearance: none; outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(92,224,216,.1);
+    }
+    .form-group select option { background: #111; }
+    .form-group textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+    .form-submit {
+      width: 100%; padding: 14px;
+      background: var(--cyan); color: #0A0A0A;
+      border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; cursor: pointer; border: none;
+      transition: all 200ms; box-shadow: var(--glow-c); margin-top: 6px;
+    }
+    .form-submit:hover { background: #74e8e0; box-shadow: 0 0 40px rgba(92,224,216,.45); }
+    .form-submit:disabled { opacity: .6; cursor: not-allowed; }
+    .form-note { font-size: 11px; color: var(--muted); margin-top: 10px; text-align: center; }
+    .success-msg {
+      display: none; text-align: center; padding: 20px;
+      background: rgba(92,224,216,.07);
+      border: 1px solid rgba(92,224,216,.18);
+      border-radius: var(--r); margin-top: 14px;
+    }
+    .success-msg.show { display: block; }
+    .success-msg p { color: var(--cyan); font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; }
+    .success-msg small { color: var(--muted); font-size: 13px; }
+
+    /* ── INSTAGRAM CTA ───────────────────────────────────── */
+    .insta-section { text-align: center; padding: 96px 0; }
+    .insta-handle-box {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 12px 22px; margin-bottom: 28px;
+    }
+    .insta-handle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px; font-weight: 700;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    .footer { padding: 44px 0 28px; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 8px; }
+    .footer-logo-word {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 900;
+      text-transform: uppercase; letter-spacing: .08em; color: var(--cyan);
+    }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; color: var(--muted); transition: color 200ms; }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+
+    /* ── REDUCED MOTION ──────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .subs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-right .btn-outline { display: none; }
+      .nav-burger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero { min-height: auto; padding-top: calc(var(--nav-h) + 56px); }
+      .dir-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-card.feat { grid-column: span 1; }
+      .prices-grid { grid-template-columns: 1fr; }
+      .subs-grid { grid-template-columns: 1fr; }
+      .sch-grid { grid-template-columns: 1fr; }
+      .form-inner { grid-template-columns: 1fr; }
+      .form-left { padding: 36px 24px; }
+      .form-right { padding: 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .section-gap { padding: 64px 0; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { justify-content: center; }
+      .hero-stats { gap: 18px; }
+    }
+
+    /* ── APP SECTION ────────────────────────────────────── */
+    .app-section {
+      padding: 96px 0;
+    }
+    .app-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .app-rating {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(92,224,216,.08);
+      border: 1px solid rgba(92,224,216,.18);
+      border-radius: 100px; padding: 5px 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 20px;
+    }
+    .app-stars { color: #F59E0B; letter-spacing: 1px; font-size: 13px; }
+    .app-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .app-btn {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 20px;
+      cursor: pointer; transition: all 200ms ease;
+      text-decoration: none; color: var(--text);
+    }
+    .app-btn:hover { border-color: var(--cyan); box-shadow: var(--glow-c); transform: translateX(4px); }
+    .app-btn-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+    }
+    .app-btn-icon.ios { background: #1C1C1E; }
+    .app-btn-icon.android { background: rgba(92,224,216,.1); }
+    .app-btn-text {}
+    .app-btn-sub {
+      font-size: 10px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .1em;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+    }
+    .app-btn-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .03em; line-height: 1.1;
+      margin-top: 2px;
+    }
+    .app-phone-mockup {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 28px; padding: 28px;
+      display: flex; flex-direction: column; gap: 12px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.5), var(--glow-c);
+      position: relative; overflow: hidden;
+    }
+    .app-phone-mockup::before {
+      content: '';
+      position: absolute; top: -40%; right: -20%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(92,224,216,.08), transparent 70%);
+      pointer-events: none;
+    }
+    .app-mockup-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .app-mockup-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px; font-weight: 900; color: var(--cyan);
+      text-transform: uppercase;
+    }
+    .app-mockup-badge {
+      background: rgba(92,224,216,.12); border: 1px solid rgba(92,224,216,.2);
+      border-radius: 6px; padding: 3px 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; color: var(--cyan);
+    }
+    .app-mockup-stat {
+      background: var(--bg); border-radius: 12px; padding: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .app-mockup-stat-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(92,224,216,.1);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .app-mockup-stat-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 900; color: var(--cyan); line-height: 1;
+    }
+    .app-mockup-stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .app-mockup-bar { background: var(--bg); border-radius: 12px; padding: 14px 16px; }
+    .app-mockup-bar-label {
+      font-size: 11px; color: var(--muted); margin-bottom: 8px;
+      font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .1em;
+    }
+    .app-mockup-progress {
+      height: 6px; background: rgba(255,255,255,.07); border-radius: 3px; overflow: hidden;
+    }
+    .app-mockup-progress-fill {
+      height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--pink));
+    }
+    @media (max-width: 768px) {
+      .app-inner { grid-template-columns: 1fr; }
+      .app-phone-mockup { max-width: 360px; margin: 0 auto; }
+      .app-btns { flex-direction: row; }
+    }
+    @media (max-width: 480px) {
+      .app-btns { flex-direction: column; }
+    }
+
+    /* ── APP MODAL ──────────────────────────────────────── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,.75); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 40px 36px;
+      max-width: 420px; width: 100%;
+      position: relative; text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6), var(--glow-c);
+      animation: modalIn 300ms ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(.94) translateY(12px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute; top: 14px; right: 16px;
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255,255,255,.06); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 150ms;
+    }
+    .modal-close:hover { background: rgba(255,255,255,.12); }
+    .modal-close svg { width: 16px; height: 16px; color: var(--muted); }
+    .modal-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(92,224,216,.1); border: 1px solid rgba(92,224,216,.2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .modal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px; font-weight: 900;
+      text-transform: uppercase; letter-spacing: .02em;
+      margin-bottom: 8px;
+    }
+    .modal-sub { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+    .modal-qr-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-bottom: 20px;
+    }
+    .modal-qr-item {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 12px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+    }
+    .modal-qr-item img { width: 100px; height: 100px; border-radius: 8px; }
+    .modal-qr-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+    }
+    .modal-app-btns { display: flex; flex-direction: column; gap: 10px; }
+    .modal-app-btn {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px;
+      text-decoration: none; color: var(--text);
+      transition: all 180ms ease;
+    }
+    .modal-app-btn:hover { border-color: var(--cyan); box-shadow: var(--glow-c); }
+    .modal-app-btn svg { flex-shrink: 0; }
+    .modal-app-btn-text { text-align: left; }
+    .modal-app-btn-sub { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+    .modal-app-btn-name { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 800; text-transform: uppercase; }
+    .modal-divider { display: flex; align-items: center; gap: 12px; margin: 16px 0; }
+    .modal-divider::before, .modal-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .modal-divider span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════ NAV -->
+<nav class="nav" role="navigation" aria-label="Головна навігація">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo-wrap" aria-label="Opium Fitness — на головну">
+      <!-- Logo mark SVG -->
+      <svg class="nav-logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Outer side bars -->
+        <rect x="4" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+        <rect x="86" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+        <!-- Outer oval ring - top arc -->
+        <path d="M20 18 Q50 6 80 18" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- Outer oval ring - bottom arc -->
+        <path d="M20 82 Q50 94 80 82" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- Middle ring left arc -->
+        <path d="M26 30 Q14 50 26 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <!-- Middle ring right arc -->
+        <path d="M74 30 Q86 50 74 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <!-- Inner C left -->
+        <path d="M38 34 Q24 50 38 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <!-- Inner C right -->
+        <path d="M62 34 Q76 50 62 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="nav-logo-word">OPIUM</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#directions">Напрямки</a>
+      <a href="#trainers">Тренери</a>
+      <a href="#prices">Ціни</a>
+      <a href="#schedule">Розклад</a>
+      <a href="#app">Застосунок</a>
+      <a href="#contact">Контакти</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-outline" style="padding:9px 16px;font-size:13px;">Instagram</a>
+      <a href="#contact" class="btn btn-primary" style="padding:9px 16px;font-size:13px;">Записатись</a>
+    </div>
+
+    <button class="nav-burger" id="burger" aria-label="Відкрити меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Мобільне меню">
+  <a href="#directions" onclick="closeMobile()">Напрямки</a>
+  <a href="#trainers" onclick="closeMobile()">Тренери</a>
+  <a href="#prices" onclick="closeMobile()">Ціни</a>
+  <a href="#schedule" onclick="closeMobile()">Розклад</a>
+  <a href="#app" onclick="closeMobile()">Застосунок</a>
+  <a href="#contact" onclick="closeMobile()">Контакти</a>
+  <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener">Instagram</a>
+  <a href="#contact" onclick="closeMobile()" class="btn btn-primary" style="text-align:center;margin-top:8px;justify-content:center;">Записатись</a>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ HERO -->
+<section class="hero" aria-label="Головна секція">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Спортзал у Львові</div>
+        <h1 class="hero-title">
+          Твоє<br/>
+          <span class="c">Healthy</span><br/>
+          <span class="p">Community</span>
+        </h1>
+        <p class="hero-desc">
+          Opium Fitness — місце де трансформуються тіла і характери. CrossFit, бокс, Muay Thai, стретчинг і персональні тренування в одному просторі.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Залишити заявку
+          </a>
+          <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-insta">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Написати в Instagram
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">4.7★</div>
+            <div class="stat-label">124 відгуки Google</div>
+          </div>
+          <div>
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Тренерів у команді</div>
+          </div>
+          <div>
+            <div class="stat-num">6</div>
+            <div class="stat-label">Напрямків тренувань</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div style="position:relative;">
+          <div class="hero-card-big">
+            <div class="hero-placeholder" aria-hidden="true">
+              <!-- Замінити на реальне фото залу -->
+              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.15">
+                <rect x="4" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+                <rect x="86" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+                <path d="M20 18 Q50 6 80 18" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+                <path d="M20 82 Q50 94 80 82" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+                <path d="M26 30 Q14 50 26 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+                <path d="M74 30 Q86 50 74 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+                <path d="M38 34 Q24 50 38 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <path d="M62 34 Q76 50 62 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span class="hero-placeholder-text">Фото залу</span>
+            </div>
+            <div class="hero-overlay">
+              <div class="hero-overlay-label">Твій зал</div>
+              <div class="hero-overlay-title">Opium Fitness</div>
+            </div>
+          </div>
+          <div class="hero-badge" aria-label="Львів, Україна">
+            <div class="hero-badge-num">LVV</div>
+            <div class="hero-badge-txt">Львів<br/>Україна</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ DIRECTIONS -->
+<section class="section-gap" id="directions" aria-label="Напрямки тренувань">
+  <div class="container">
+    <div class="label">Що ми пропонуємо</div>
+    <h2 class="section-title">Напрямки<br/><span class="c">тренувань</span></h2>
+    <div class="dir-grid">
+
+      <div class="dir-card">
+        <div class="dir-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11v11h-11z"/><path d="M4 4l2.5 2.5M20 4l-2.5 2.5M4 20l2.5-2.5M20 20l-2.5-2.5"/></svg>
+        </div>
+        <div class="dir-name">CrossFit</div>
+        <p class="dir-desc">Функціональні тренування з елементами важкої атлетики, гімнастики і кардіо. Розвиває витривалість, силу і спритність.</p>
+      </div>
+
+      <div class="dir-card">
+        <div class="dir-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="dir-name">Бокс</div>
+        <p class="dir-desc">Від техніки базових ударів до спаринг-тренувань. Дисципліна, концентрація і впевненість у собі — гарантовані.</p>
+      </div>
+
+      <div class="dir-card">
+        <div class="dir-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <div class="dir-name">Muay Thai</div>
+        <p class="dir-desc">Тайський бокс — бойове мистецтво що розвиває техніку ударів руками, ногами, колінами та ліктями. Сила і координація.</p>
+      </div>
+
+      <div class="dir-card">
+        <div class="dir-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="dir-name">Самооборона</div>
+        <p class="dir-desc">Практичні навички захисту в реальних ситуаціях. Без зайвої теорії — тільки ефективні техніки для будь-якого рівня.</p>
+      </div>
+
+      <div class="dir-card">
+        <div class="dir-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M7 13s.5 3 5 3 5-3 5-3"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="dir-name">Стретчинг</div>
+        <p class="dir-desc">Розтяжка і відновлення. Barre-елементи, корекція постави, зняття м'язової напруги після силових тренувань.</p>
+      </div>
+
+      <div class="dir-card" style="border-color:rgba(255,32,112,.2);background:linear-gradient(135deg,rgba(255,32,112,.06),rgba(92,224,216,.04));">
+        <div class="dir-icon" style="background:rgba(255,32,112,.1);" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FF2070" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="dir-name" style="color:#FF2070;">Спільнота</div>
+        <p class="dir-desc">Opium Fitness — це більше ніж зал. Твоє <strong style="color:var(--text);">healthy community</strong> де мотивують одне одного кожного дня.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ TRAINERS -->
+<section class="section-gap" id="trainers" aria-label="Наші тренери">
+  <div class="container">
+    <div class="label">Наша команда</div>
+    <h2 class="section-title">Тренери<br/><span class="c">Opium</span></h2>
+
+    <div class="trainers-scroll-wrap">
+      <button class="scroll-btn scroll-btn-left" id="scrollLeft" aria-label="Прокрутити ліворуч">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="scroll-btn scroll-btn-right" id="scrollRight" aria-label="Прокрутити праворуч">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <div class="trainers-scroll" id="trainersScroll">
+
+        <article class="trainer-card">
+          <img src="assets/trainers/ostap-frankiv.png" alt="Остап Франків — тренер CrossFit" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Остап Франків</div>
+            <p class="trainer-bio">Допомагаю людям ставати сильнішими, витривалішими та впевненішими в собі незалежно від рівня підготовки.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">CrossFit</span>
+              <span class="trainer-tag">Силова</span>
+              <span class="trainer-tag">Кондиція</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/yulia-frankiv.png" alt="Юлія Франків — тренер CrossFit та нутриціолог" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Юлія Франків</div>
+            <p class="trainer-bio">Понад 8 років у фітнес-індустрії. CrossFit і функціональний тренінг. Практикуючий нутриціолог.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">CrossFit</span>
+              <span class="trainer-tag">Нутриціолог</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/ostap-verhun.png" alt="Остап Вергун — тренер з боксу" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Остап Вергун</div>
+            <p class="trainer-bio">15+ років спортивного досвіду. Чемпіон Львівської обл. та призер чемпіонату України з кіокушинкай карате.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">Бокс</span>
+              <span class="trainer-tag">Карате</span>
+              <span class="trainer-tag">Нутриціологія</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/maryana-petriv.png" alt="Мар'яна Петрів — тренер з медичною освітою" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Мар'яна Петрів</div>
+            <p class="trainer-bio">Сертифікований тренер з медичною освітою. Понад 6 років у фітнес-індустрії.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">Функціональний</span>
+              <span class="trainer-tag">TRX</span>
+              <span class="trainer-tag">Силові</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/olena-dorozhovets.png" alt="Олена Дорожовець — тренер бодібілдингу" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Олена Дорожовець</div>
+            <p class="trainer-bio">Сертифікований тренер Національної Федерації бодібілдингу України. Спортивний досвід понад 8 років.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">Силовий</span>
+              <span class="trainer-tag">Корекція фігури</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/yuriy-sushko.png" alt="Юрій Сушко — тренер тренажерного залу" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Юрій Сушко</div>
+            <p class="trainer-bio">Сертифікований тренер. 18 років спортивного досвіду, 7 років тренерського. Реабілітація після травм.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">Тренажерний зал</span>
+              <span class="trainer-tag">Реабілітація</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/evgenia-havel.png" alt="Євгенія Гавель — фітнес-тренер" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Євгенія Гавель</div>
+            <p class="trainer-bio">15 років у сфері фітнесу. Глибокі знання та індивідуальний підхід. Робота з клієнтами будь-якого віку.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">Силові</span>
+              <span class="trainer-tag">Харчування</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/khrystyna-hrabar.png" alt="Христина Грабар — персональний тренер" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Христина Грабар</div>
+            <p class="trainer-bio">Сертифікований персональний тренер. Спортивний досвід понад 5 років. Набір маси та схуднення.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">М'язова маса</span>
+              <span class="trainer-tag">Схуднення</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/diana-sinchilova.png" alt="Діана Сінчілова — тренер фітнесу та стретчингу" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Діана Сінчілова</div>
+            <p class="trainer-bio">Дипломований тренер з вищою освітою. 10+ років тренерського досвіду. У спорті понад 23 роки.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">Фітнес</span>
+              <span class="trainer-tag">Стретчинг</span>
+              <span class="trainer-tag">Barre</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="trainer-card">
+          <img src="assets/trainers/maria-dolgova.png" alt="Марія Долгова — тренер стретчингу та Barre" class="trainer-photo" loading="lazy" />
+          <div class="trainer-info">
+            <div class="trainer-name">Марія Долгова</div>
+            <p class="trainer-bio">КМС з фігурного катання. 13 років фігурного катання і 6 років балету. Пластика і гнучкість.</p>
+            <div class="trainer-tags">
+              <span class="trainer-tag">Стретчинг</span>
+              <span class="trainer-tag">Barre</span>
+              <span class="trainer-tag">Корекція фігури</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ WHY -->
+<section class="section-gap" id="why" aria-label="Чому Opium Fitness">
+  <div class="container">
+    <div class="label">Наші переваги</div>
+    <h2 class="section-title">Чому обирають<br/><span class="c">Opium</span></h2>
+    <div class="why-grid">
+      <div class="why-card feat">
+        <div class="why-num" aria-hidden="true">01</div>
+        <div>
+          <div class="why-title">Власний мобільний застосунок</div>
+          <p class="why-text">Відстежуй тренування, бронюй заняття і стеж за прогресом прямо зі смартфона. Один із небагатьох залів у Львові з власним app.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num" aria-hidden="true">02</div>
+        <div>
+          <div class="why-title">10+ досвідчених тренерів</div>
+          <p class="why-text">Кожен тренер — практик зі своїм спортивним шляхом. Від КМС і чемпіонів до нутриціологів і медиків.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num" aria-hidden="true">03</div>
+        <div>
+          <div class="why-title">Розширений простір</div>
+          <p class="why-text">Зал розширився — більше обладнання, більше зон для різних напрямків. Простір що надихає на результат.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-num" aria-hidden="true">04</div>
+        <div>
+          <div class="why-title">Атмосфера без понтів</div>
+          <p class="why-text">Немає місця для суджень. Приходь новачком — стань своїм. Щоденна мотивація і підтримка від спільноти.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ PRICES -->
+<section class="section-gap" id="prices" aria-label="Ціни та абонементи">
+  <div class="container">
+    <div class="label">Вартість послуг</div>
+    <h2 class="section-title">Ціни<br/><span class="c">та абонементи</span></h2>
+
+    <div class="prices-wrap">
+      <!-- Individual prices -->
+      <div class="prices-grid">
+
+        <div class="price-block">
+          <div class="price-block-header">
+            <div class="price-block-title">Групові заняття</div>
+          </div>
+          <div class="price-row">
+            <span class="price-item-name">1 групове тренування</span>
+            <span class="price-item-val">330 <span>грн</span></span>
+          </div>
+        </div>
+
+        <div class="price-block">
+          <div class="price-block-header">
+            <div class="price-block-title">Індивідуальні заняття</div>
+          </div>
+          <div class="price-row">
+            <span class="price-item-name">Boxing</span>
+            <span class="price-item-val">600 <span>грн</span></span>
+          </div>
+          <div class="price-row">
+            <span class="price-item-name">Muay Thai</span>
+            <span class="price-item-val">600 <span>грн</span></span>
+          </div>
+          <div class="price-row">
+            <span class="price-item-name">Самооборона</span>
+            <span class="price-item-val">600 <span>грн</span></span>
+          </div>
+          <div class="price-row">
+            <span class="price-item-name">Stretching</span>
+            <span class="price-item-val">600 <span>грн</span></span>
+          </div>
+        </div>
+
+        <div class="price-block">
+          <div class="price-block-header">
+            <div class="price-block-title">Персональні тренування</div>
+          </div>
+          <div class="price-row">
+            <span class="price-item-name">Заняття з тренером-амбасадором</span>
+            <span class="price-item-val">600 <span>грн</span></span>
+          </div>
+          <div class="price-row">
+            <span class="price-item-name">Заняття з тренером 1 категорії</span>
+            <span class="price-item-val">500 <span>грн</span></span>
+          </div>
+        </div>
+
+        <div class="price-block" style="border-color:rgba(255,32,112,.15);background:linear-gradient(135deg,rgba(255,32,112,.04),transparent);">
+          <div class="price-block-header" style="background:rgba(255,32,112,.05);border-bottom-color:rgba(255,32,112,.12);">
+            <div class="price-block-title" style="color:var(--pink);">Потрібна консультація?</div>
+          </div>
+          <div style="padding:20px 22px;">
+            <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:18px;">
+              Напиши нам в Instagram — підберемо оптимальний формат тренувань і тренера під твої цілі.
+            </p>
+            <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-insta" style="width:100%;justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Написати в Instagram
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Subscription cards -->
+      <div class="label" style="margin-top:36px;">Абонементи</div>
+      <div class="subs-grid">
+        <div class="sub-card">
+          <div class="sub-name">Разове відвідування</div>
+          <div class="sub-price"><sup>₴</sup>330</div>
+          <div class="sub-period">групове тренування</div>
+          <ul class="sub-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Будь-який напрямок</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Без реєстрації</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Ідеально для знайомства</li>
+          </ul>
+          <button class="sub-btn" onclick="scrollToApp()">Завантажити застосунок</button>
+        </div>
+
+        <div class="sub-card pop">
+          <div class="pop-badge">Найпопулярніший</div>
+          <div class="sub-name">Місячний абонемент</div>
+          <div class="sub-price"><sup>₴</sup>???</div>
+          <div class="sub-period">на місяць · уточнюй ціну</div>
+          <ul class="sub-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Необмежені відвідування</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Всі групові напрямки</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Доступ до застосунку</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Заморозка</li>
+          </ul>
+          <button class="sub-btn p" onclick="scrollToApp()">Оплатити в застосунку</button>
+        </div>
+
+        <div class="sub-card">
+          <div class="sub-name">Персональні тренування</div>
+          <div class="sub-price" style="color:var(--pink);font-size:32px;padding-top:6px;">Від 500 ₴</div>
+          <div class="sub-period">за одне заняття</div>
+          <ul class="sub-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Індивідуальна програма</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Особистий тренер</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Нутриціологічна підтримка</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Відстеження прогресу</li>
+          </ul>
+          <button class="sub-btn" onclick="scrollToContact()" style="border-color:rgba(255,32,112,.25);color:var(--pink);">Замовити</button>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:16px;font-size:12px;color:var(--muted);">* Актуальні ціни на абонементи — уточнюй у менеджерів або в Instagram.</p>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ SCHEDULE -->
+<section class="section-gap" id="schedule" aria-label="Розклад роботи">
+  <div class="container">
+    <div class="label">Ми відкриті</div>
+    <h2 class="section-title">Розклад<br/><span class="c">роботи</span></h2>
+    <div class="sch-grid">
+      <div class="sch-card">
+        <div class="sch-day">Понеділок — П'ятниця</div>
+        <div class="sch-time">07:00 — 22:00</div>
+        <p class="sch-note">Групові та персональні тренування. Всі напрямки.</p>
+      </div>
+      <div class="sch-card">
+        <div class="sch-day">Субота</div>
+        <div class="sch-time">09:00 — 20:00</div>
+        <p class="sch-note">Активний вікенд. CrossFit, бокс, відкриті тренування.</p>
+      </div>
+      <div class="sch-card">
+        <div class="sch-day">Неділя</div>
+        <div class="sch-time">10:00 — 18:00</div>
+        <p class="sch-note">Відновлення. Стретчинг, Barre, легкий тренінг.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:16px;font-size:12px;color:var(--muted);">* Розклад групових занять — в застосунку або в Instagram.</p>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ CONTACT -->
+<section class="section-gap" id="contact" aria-label="Форма заявки">
+  <div class="container">
+    <div class="form-section">
+      <div class="form-inner">
+        <div class="form-left">
+          <div class="label">Готовий стартувати?</div>
+          <h2 class="section-title" style="margin-bottom:18px;">
+            Залишити<br/><span class="c">заявку</span>
+          </h2>
+          <p style="color:var(--muted);font-size:14px;line-height:1.75;margin-bottom:28px;">
+            Заповни форму — менеджер зв'яжеться протягом 1 години і розповість про все що тебе цікавить.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+              <div style="width:38px;height:38px;background:rgba(255,32,112,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#FF2070" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--muted);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;">Instagram</div>
+                <div style="font-size:14px;color:var(--pink);">@opiumfitness.ua</div>
+              </div>
+            </a>
+            <a href="tel:+380930033636" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+              <div style="width:38px;height:38px;background:rgba(92,224,216,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.07 6.07l1.17-1.17a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--muted);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;">Телефон</div>
+                <div style="font-size:14px;color:var(--cyan);">+380 93 003 3636</div>
+              </div>
+            </a>
+            <a href="https://maps.app.goo.gl/opiumfitness" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+              <div style="width:38px;height:38px;background:rgba(92,224,216,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--muted);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;">Адреса</div>
+                <div style="font-size:14px;">вул. Шевченка, 31А, Львів</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="form-right">
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name">Ім'я *</label>
+              <input type="text" id="name" name="name" placeholder="Твоє ім'я" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Телефон *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+380 XX XXX XX XX" required autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label for="direction">Напрямок</label>
+              <select id="direction" name="direction">
+                <option value="">Обери напрямок</option>
+                <option>CrossFit</option>
+                <option>Бокс</option>
+                <option>Muay Thai</option>
+                <option>Самооборона</option>
+                <option>Стретчинг / Barre</option>
+                <option>Персональні тренування</option>
+                <option>Спортзал (самостійно)</option>
+                <option>Ще не вирішив/ла</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Коментар</label>
+              <textarea id="message" name="message" placeholder="Ціль, питання, побажання..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Залишити заявку</button>
+            <p class="form-note">Натискаючи кнопку, ти погоджуєшся на обробку персональних даних.</p>
+            <div class="success-msg" id="successMsg" role="alert">
+              <p>Заявку отримано!</p>
+              <small>Зв'яжемося з тобою найближчим часом 💪</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ APP SECTION -->
+<section class="app-section" id="app" aria-label="Мобільний застосунок Opium Fitness">
+  <div class="container">
+    <div class="app-inner">
+      <div>
+        <div class="app-rating">
+          <span class="app-stars">★★★★★</span>
+          Opium App
+        </div>
+        <div class="label">Власний застосунок</div>
+        <h2 class="section-title" style="margin-bottom:18px;">
+          Тренуйся<br/><span class="c">з телефону</span>
+        </h2>
+        <p style="color:var(--muted);font-size:15px;line-height:1.75;max-width:440px;margin-bottom:8px;">
+          Бронюй заняття, відстежуй прогрес, отримуй розклад і оплачуй абонементи — прямо зі смартфона. Opium Fitness — один із небагатьох залів у Львові з власним застосунком.
+        </p>
+        <div class="app-btns" id="appButtons">
+          <a href="http://apps.apple.com/ar/app/opium/id6714474721?l=en-GB" target="_blank" rel="noopener" class="app-btn" aria-label="Завантажити Opium для iPhone">
+            <div class="app-btn-icon ios">
+              <!-- Apple logo -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            </div>
+            <div class="app-btn-text">
+              <div class="app-btn-sub">Завантажити в</div>
+              <div class="app-btn-name">App Store</div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:auto;" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.softlab.opium" target="_blank" rel="noopener" class="app-btn" aria-label="Завантажити Opium для Android">
+            <div class="app-btn-icon android">
+              <!-- Play Store logo -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 20.5v-17c0-.83 1-.83 1.5-.5L20 12 4.5 21c-.5.33-1.5.33-1.5-.5z" fill="#5CE0D8"/>
+                <path d="M3 3.5L13.5 14" stroke="#0A0A0A" stroke-width="1.5"/>
+                <path d="M3 20.5L13.5 10" stroke="#0A0A0A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="app-btn-text">
+              <div class="app-btn-sub">Завантажити в</div>
+              <div class="app-btn-name">Google Play</div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:auto;" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="app-phone-mockup" role="img" aria-label="Скріншот застосунку Opium Fitness">
+        <div class="app-mockup-top">
+          <div class="app-mockup-logo">
+            <svg width="18" height="18" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+              <rect x="4" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+              <rect x="86" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+              <path d="M20 18 Q50 6 80 18" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <path d="M20 82 Q50 94 80 82" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <path d="M26 30 Q14 50 26 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+              <path d="M74 30 Q86 50 74 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+              <path d="M38 34 Q24 50 38 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+              <path d="M62 34 Q76 50 62 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+            </svg>
+            OPIUM
+          </div>
+          <span class="app-mockup-badge">Онлайн</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="app-mockup-stat">
+            <div class="app-mockup-stat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div>
+              <div class="app-mockup-stat-val">12</div>
+              <div class="app-mockup-stat-label">Тренувань</div>
+            </div>
+          </div>
+          <div class="app-mockup-stat">
+            <div class="app-mockup-stat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="app-mockup-stat-val">8:30</div>
+              <div class="app-mockup-stat-label">Наступне</div>
+            </div>
+          </div>
+        </div>
+        <div class="app-mockup-bar">
+          <div class="app-mockup-bar-label">Прогрес місяця</div>
+          <div class="app-mockup-progress">
+            <div class="app-mockup-progress-fill" style="width:72%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:6px;">
+            <span style="font-size:11px;color:var(--muted);">18 / 25 занять</span>
+            <span style="font-size:11px;color:var(--cyan);font-weight:700;">72%</span>
+          </div>
+        </div>
+        <div class="app-mockup-bar">
+          <div class="app-mockup-bar-label">Найближче заняття</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px;">
+            <div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;">CrossFit · ПН 08:00</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Остап Франків · зал A</div>
+            </div>
+            <div style="background:rgba(92,224,216,.12);border:1px solid rgba(92,224,216,.2);border-radius:8px;padding:6px 12px;">
+              <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:var(--cyan);">Заброньовано</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════ INSTAGRAM CTA -->
+<section class="insta-section" aria-label="Instagram спільнота">
+  <div class="container">
+    <div class="label">Слідкуй за нами</div>
+    <h2 class="section-title" style="margin-bottom:14px;">Ми в<br/><span class="p">Instagram</span></h2>
+    <p style="color:var(--muted);font-size:15px;max-width:420px;margin:0 auto 28px;">Щоденний контент: тренування, результати, мотивація і новини спільноти.</p>
+    <div class="insta-handle-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="url(#ig2)" aria-hidden="true">
+        <defs>
+          <linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/>
+          </linearGradient>
+        </defs>
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      <span class="insta-handle">@opiumfitness.ua</span>
+    </div>
+    <br/>
+    <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-insta" style="font-size:16px;padding:15px 36px;">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Підписатись в Instagram
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo-wrap">
+        <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+          <rect x="86" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+          <path d="M20 18 Q50 6 80 18" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M20 82 Q50 94 80 82" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M26 30 Q14 50 26 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+          <path d="M74 30 Q86 50 74 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+          <path d="M38 34 Q24 50 38 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <path d="M62 34 Q76 50 62 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="footer-logo-word">OPIUM FITNESS</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer навігація">
+        <a href="#directions">Напрямки</a>
+        <a href="#trainers">Тренери</a>
+        <a href="#prices">Ціни</a>
+        <a href="#schedule">Розклад</a>
+        <a href="#contact">Контакти</a>
+        <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <div class="footer-copy">© 2025 Opium Fitness. Львів, Україна.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════ APP MODAL -->
+<div class="modal-overlay" id="appModal" role="dialog" aria-modal="true" aria-label="Завантажити застосунок Opium">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Закрити">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-icon">
+      <svg width="28" height="28" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <rect x="4" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+        <rect x="86" y="22" width="10" height="56" rx="5" fill="#5CE0D8"/>
+        <path d="M20 18 Q50 6 80 18" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <path d="M20 82 Q50 94 80 82" stroke="#5CE0D8" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <path d="M26 30 Q14 50 26 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <path d="M74 30 Q86 50 74 70" stroke="#5CE0D8" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <path d="M38 34 Q24 50 38 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+        <path d="M62 34 Q76 50 62 66" stroke="#5CE0D8" stroke-width="8" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="modal-title">Заявку прийнято!</div>
+    <p class="modal-sub">Зв'яжемося з тобою найближчим часом.<br/>А поки — завантажуй застосунок Opium Fitness 💪</p>
+
+    <!-- QR codes -->
+    <div class="modal-qr-grid">
+      <div class="modal-qr-item">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=http://apps.apple.com/ar/app/opium/id6714474721&bgcolor=111111&color=5CE0D8&qzone=1"
+          alt="QR-код для App Store"
+          width="120" height="120"
+          loading="lazy"
+        />
+        <div class="modal-qr-label">App Store</div>
+      </div>
+      <div class="modal-qr-item">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://play.google.com/store/apps/details?id=com.softlab.opium&bgcolor=111111&color=5CE0D8&qzone=1"
+          alt="QR-код для Google Play"
+          width="120" height="120"
+          loading="lazy"
+        />
+        <div class="modal-qr-label">Google Play</div>
+      </div>
+    </div>
+
+    <div class="modal-divider"><span>або натисни</span></div>
+
+    <div class="modal-app-btns">
+      <a href="http://apps.apple.com/ar/app/opium/id6714474721?l=en-GB" target="_blank" rel="noopener" class="modal-app-btn" aria-label="Завантажити для iPhone">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="modal-app-btn-text">
+          <div class="modal-app-btn-sub">Завантажити в</div>
+          <div class="modal-app-btn-name">App Store</div>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:auto;" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.softlab.opium" target="_blank" rel="noopener" class="modal-app-btn" aria-label="Завантажити для Android">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 20.5v-17c0-.83 1-.83 1.5-.5L20 12 4.5 21c-.5.33-1.5.33-1.5-.5z" fill="#5CE0D8"/>
+        </svg>
+        <div class="modal-app-btn-text">
+          <div class="modal-app-btn-sub">Завантажити в</div>
+          <div class="modal-app-btn-name">Google Play</div>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:auto;" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ JS -->
+<script>
+  // ── Mobile menu ──
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+  document.addEventListener('click', e => {
+    if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobile();
+  });
+
+  // ── Scroll helpers ──
+  function scrollToContact() {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  }
+  function scrollToApp() {
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ── App modal ──
+  const appModal = document.getElementById('appModal');
+  function openAppModal() {
+    appModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAppModal() {
+    appModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeAppModal);
+  appModal.addEventListener('click', e => { if (e.target === appModal) closeAppModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAppModal(); });
+
+  // ── Trainers horizontal scroll ──
+  const track = document.getElementById('trainersScroll');
+  document.getElementById('scrollLeft').addEventListener('click', () => {
+    track.scrollBy({ left: -290, behavior: 'smooth' });
+  });
+  document.getElementById('scrollRight').addEventListener('click', () => {
+    track.scrollBy({ left: 290, behavior: 'smooth' });
+  });
+
+  // Drag to scroll
+  let isDragging = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => {
+    isDragging = true; startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft; track.style.userSelect = 'none';
+  });
+  track.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX);
+  });
+  ['mouseup','mouseleave'].forEach(ev => track.addEventListener(ev, () => {
+    isDragging = false; track.style.userSelect = '';
+  }));
+
+  // ── Form submit ──
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    if (!name || !phone) { alert("Будь ласка, заповни ім'я і телефон."); return; }
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Надсилаємо...'; btn.disabled = true;
+    setTimeout(() => {
+      e.target.reset();
+      btn.textContent = 'Залишити заявку'; btn.disabled = false;
+      openAppModal();
+    }, 900);
+  });
+
+  // ── Scroll fade-in ──
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.style.opacity = '1';
+        en.target.style.transform = 'translateY(0)';
+        obs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.dir-card, .why-card, .sub-card, .sch-card, .price-block').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity 380ms ease, transform 380ms ease';
+      obs.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
