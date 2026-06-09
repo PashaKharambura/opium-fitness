@@ -885,8 +885,8 @@
     /* ── WHY BENTO ──────────────────────────────────────── */
     .why-bento {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 200px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 230px;
       gap: 14px; margin-top: 44px;
     }
     .bento {
@@ -899,11 +899,11 @@
       transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
     }
     .bento:hover { transform: translateY(-4px); border-color: rgba(92,224,216,.3); box-shadow: 0 16px 48px rgba(0,0,0,.4); }
-    .bento-a { grid-column: span 2; grid-row: span 2; background: linear-gradient(150deg, rgba(92,224,216,.08), rgba(10,10,10,0) 60%); }
-    .bento-b { grid-column: span 2; }
-    .bento-c { grid-column: span 1; grid-row: span 1; }
-    .bento-d { grid-column: span 1; grid-row: span 1; }
-    .bento-e { grid-column: span 2; background: linear-gradient(150deg, rgba(255,32,112,.07), rgba(10,10,10,0) 60%); }
+    .bento-a { grid-column: 1; grid-row: 1; background: linear-gradient(150deg, rgba(92,224,216,.08), rgba(10,10,10,0) 60%); }
+    .bento-e { grid-column: 1; grid-row: 2; background: linear-gradient(150deg, rgba(255,32,112,.07), rgba(10,10,10,0) 60%); }
+    .bento-b { grid-column: 2 / span 2; grid-row: 1; }
+    .bento-c { grid-column: 2; grid-row: 2; }
+    .bento-d { grid-column: 3; grid-row: 2; }
     .bento-icon {
       width: 46px; height: 46px; border-radius: 12px;
       background: rgba(92,224,216,.1);
@@ -917,10 +917,10 @@
       font-weight: 800; text-transform: uppercase;
       letter-spacing: .02em; line-height: 1.05; margin-bottom: 8px;
     }
-    .bento-a .bento-title { font-size: 30px; }
     .bento-title { font-size: 21px; }
     .bento-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
-    .bento-a .bento-text { font-size: 14px; max-width: 90%; }
+    .bento-watermark { font-size: 96px; right: -6px; bottom: -14px; }
+    .bento-b .bento-watermark { font-size: 130px; }
     .bento-big-num {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 52px; font-weight: 900; color: var(--cyan); line-height: 1;
@@ -1441,7 +1441,7 @@
         </div>
         <div>
           <div class="bento-title">Власний мобільний застосунок</div>
-          <p class="bento-text">Відстежуй тренування, бронюй заняття та стеж за прогресом прямо зі смартфона. Один із небагатьох залів у Львові з власним app — для iOS та Android.</p>
+          <p class="bento-text">Бронюй заняття та стеж за прогресом зі смартфона. iOS та Android.</p>
         </div>
       </div>
 
@@ -1473,14 +1473,14 @@
         </div>
       </div>
 
-      <div class="bento bento-e" style="grid-column: span 4;">
+      <div class="bento bento-e">
         <div class="bento-watermark" aria-hidden="true" style="color:rgba(255,32,112,.05);">COMMUNITY</div>
         <div class="bento-icon pink" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
         <div>
           <div class="bento-title">Атмосфера без понтів</div>
-          <p class="bento-text">Немає місця для суджень. Приходь новачком — стань своїм. Щоденна мотивація та підтримка від healthy community Opium.</p>
+          <p class="bento-text">Приходь новачком — стань своїм. Щоденна мотивація та підтримка від healthy community.</p>
         </div>
       </div>
 
@@ -1497,7 +1497,7 @@
     <h2 class="section-title">Ціни<br/><span class="c">та абонементи</span></h2>
 
     <!-- Free first training banner -->
-    <div class="free-banner" style="margin-bottom:8px;">
+    <div class="free-banner" style="margin-top:44px;margin-bottom:8px;">
       <div class="free-banner-left">
         <div class="free-banner-tag" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
