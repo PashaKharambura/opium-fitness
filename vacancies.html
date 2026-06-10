@@ -387,8 +387,9 @@
     if (!name || !phone) { alert("Будь ласка, заповни імʼя і телефон."); return; }
     const btn = e.target.querySelector('.form-submit');
     const payload = {
+      type: 'vacancy',
       name, phone,
-      direction: 'Вакансія: ' + document.getElementById('avacancy').value,
+      direction: document.getElementById('avacancy').value,
       message: document.getElementById('amessage').value.trim(),
       source: 'Сторінка вакансій',
       page: location.href,

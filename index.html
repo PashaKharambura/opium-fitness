@@ -2198,6 +2198,7 @@
     if (!name || !phone) { alert("Будь ласка, заповни ім'я і телефон."); return; }
     const btn = e.target.querySelector('.form-submit');
     const payload = {
+      type: 'lead',
       name, phone,
       direction: document.getElementById('direction').value || '',
       message: document.getElementById('message').value.trim(),
