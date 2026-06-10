@@ -250,18 +250,19 @@
       line-height: 1.75; max-width: 480px; margin-bottom: 36px;
     }
     .hero-hook {
-      display: inline-flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 14px;
       background: rgba(255,32,112,.08);
       border: 1px solid rgba(255,32,112,.25);
-      border-radius: 12px; padding: 11px 16px;
-      font-size: 14px; color: var(--text); line-height: 1.4;
-      margin-bottom: 24px; max-width: 460px;
+      border-radius: 14px; padding: 14px 18px;
+      font-size: 15px; color: var(--text); line-height: 1.5;
+      margin-bottom: 18px; width: 100%; max-width: 520px;
     }
-    .hero-hook strong { color: var(--pink); }
+    .hero-hook-text { flex: 1; }
+    .hero-hook strong { color: var(--pink); font-weight: 700; }
     .hero-hook-flame {
       flex-shrink: 0; color: var(--pink);
       display: inline-flex; align-items: center; justify-content: center;
-      width: 28px; height: 28px; border-radius: 8px;
+      width: 34px; height: 34px; border-radius: 9px;
       background: rgba(255,32,112,.12);
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 44px; }
@@ -1270,7 +1271,7 @@
           <span class="hero-hook-flame" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c0 4-4 5-4 9a4 4 0 0 0 8 0c0-1.5-1-2.5-1-4 2 1 4 3.5 4 7a7 7 0 0 1-14 0c0-5 4-7 7-12z"/></svg>
           </span>
-          Перше заняття з тренером — <strong>безкоштовно</strong>. Без передоплати й зобов'язань.
+          <span class="hero-hook-text">Перше заняття з тренером — <strong>безкоштовно</strong>.<br/>Без передоплати й зобов'язань.</span>
         </div>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary" onclick="event.preventDefault();scrollToContact();">
@@ -2214,6 +2215,7 @@
       trackLead(payload);
       e.target.reset();
       document.getElementById('successMsg').classList.add('show');
+      openAppModal();
     } catch (err) {
       alert("Не вдалося надіслати заявку. Напиши нам у Telegram або Instagram — відповімо швидко.");
     } finally {
