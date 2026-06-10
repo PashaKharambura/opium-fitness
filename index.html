@@ -833,6 +833,75 @@
     }
     .modal-close:hover { background: rgba(255,255,255,.12); }
     .modal-close svg { width: 16px; height: 16px; color: var(--muted); }
+
+    /* ── PROMO POPUP (timed funnel) ── */
+    .promo-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,32,112,.3);
+      border-radius: 22px; padding: 38px 34px 32px;
+      max-width: 440px; width: 100%;
+      position: relative; text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,.65), 0 0 50px rgba(255,32,112,.18);
+      animation: modalIn 320ms ease; overflow: hidden;
+    }
+    .promo-box::before {
+      content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+      width: 240px; height: 120px;
+      background: radial-gradient(ellipse, rgba(255,32,112,.25), transparent 70%);
+      pointer-events: none;
+    }
+    .promo-gift {
+      position: relative; z-index: 1;
+      width: 60px; height: 60px; border-radius: 16px; margin: 0 auto 16px;
+      background: rgba(255,32,112,.12); border: 1px solid rgba(255,32,112,.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .promo-gift svg { width: 30px; height: 30px; color: var(--pink); }
+    .promo-tag {
+      position: relative; z-index: 1; display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--pink);
+      margin-bottom: 8px;
+    }
+    .promo-title {
+      position: relative; z-index: 1;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900;
+      line-height: 1.05; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .promo-title .p { color: var(--pink); }
+    .promo-sub { position: relative; z-index: 1; font-size: 14px; color: var(--muted); line-height: 1.55; margin-bottom: 18px; }
+    .promo-timer {
+      position: relative; z-index: 1;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(255,32,112,.08); border: 1px solid rgba(255,32,112,.25);
+      border-radius: 100px; padding: 8px 18px; margin-bottom: 20px;
+    }
+    .promo-timer-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 8px var(--pink); animation: blink 1s ease-in-out infinite; }
+    .promo-timer-num {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px;
+      color: var(--text); font-variant-numeric: tabular-nums; min-width: 54px;
+    }
+    .promo-timer-label { font-size: 12px; color: var(--muted); }
+    .promo-form { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
+    .promo-form input {
+      width: 100%; background: var(--bg); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px; padding: 13px 15px; color: var(--text);
+      font-family: 'Barlow', sans-serif; font-size: 15px; transition: border-color 200ms;
+    }
+    .promo-form input:focus { outline: none; border-color: var(--pink); }
+    .promo-submit {
+      width: 100%; background: var(--pink); color: #fff; border-radius: 10px; padding: 15px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px;
+      text-transform: uppercase; letter-spacing: .05em; box-shadow: var(--glow-p);
+      transition: all 200ms;
+    }
+    .promo-submit:hover:not(:disabled) { background: #ff3d82; transform: translateY(-1px); }
+    .promo-submit:disabled { opacity: .6; cursor: not-allowed; }
+    .promo-note { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .promo-success { position: relative; z-index: 1; display: none; padding: 10px 0; }
+    .promo-success.show { display: block; }
+    .promo-success .pt { color: var(--cyan); font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; }
+    .promo-success small { color: var(--muted); font-size: 13px; }
     .modal-icon {
       width: 56px; height: 56px; border-radius: 14px;
       background: rgba(92,224,216,.1); border: 1px solid rgba(92,224,216,.2);
@@ -2113,6 +2182,41 @@
   </div>
 </div>
 
+<!-- ══════════════════════════════════════ PROMO POPUP (timed funnel) -->
+<div class="modal-overlay" id="promoModal" role="dialog" aria-modal="true" aria-label="Перше персональне заняття у подарунок">
+  <div class="promo-box">
+    <button class="modal-close" id="promoClose" aria-label="Закрити">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="promo-gift" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+    </div>
+
+    <div class="promo-tag">Спеціальна пропозиція</div>
+    <div class="promo-title">Година з <span class="p">тренером</span><br/>у подарунок 🎁</div>
+    <p class="promo-sub">Зареєструйся на перше персональне заняття — і отримай повну годину з тренером безкоштовно. Тільки сьогодні.</p>
+
+    <div class="promo-timer" aria-hidden="true">
+      <span class="promo-timer-dot"></span>
+      <span class="promo-timer-num" id="promoTimer">01:00</span>
+      <span class="promo-timer-label">до кінця пропозиції</span>
+    </div>
+
+    <form class="promo-form" id="promoForm" novalidate>
+      <input type="text" id="promoName" placeholder="Твоє ім'я" required autocomplete="name" aria-label="Ім'я" />
+      <input type="tel" id="promoPhone" placeholder="+380 XX XXX XX XX" required autocomplete="tel" aria-label="Телефон" />
+      <button type="submit" class="promo-submit">Забрати годину в подарунок</button>
+      <p class="promo-note">Без передоплати. Менеджер передзвонить протягом години.</p>
+    </form>
+
+    <div class="promo-success" id="promoSuccess" role="alert">
+      <div class="pt">Готово! 🎉</div>
+      <small>Тримай телефон поруч — менеджер уже набирає.</small>
+    </div>
+  </div>
+</div>
+
 <!-- ══════════════════════════════════════════ JS -->
 <script>
   // ── Mobile menu ──
@@ -2275,6 +2379,92 @@
       });
     }, { threshold: 0.35 });
     popObs.observe(trainers);
+  })();
+
+  // ── Промо-попап з таймером (перше персональне заняття у подарунок) ──
+  (function() {
+    const modal = document.getElementById('promoModal');
+    const closeBtn = document.getElementById('promoClose');
+    const form = document.getElementById('promoForm');
+    const timerEl = document.getElementById('promoTimer');
+    const success = document.getElementById('promoSuccess');
+    if (!modal || !form) return;
+
+    // Таймер 60с, по завершенню — знову з початку (urgency loop)
+    let left = 60, timerId = null;
+    function render() {
+      const m = String(Math.floor(left / 60)).padStart(2, '0');
+      const s = String(left % 60).padStart(2, '0');
+      timerEl.textContent = m + ':' + s;
+    }
+    function startTimer() {
+      render();
+      clearInterval(timerId);
+      timerId = setInterval(() => {
+        left = left > 0 ? left - 1 : 60;  // рестарт на 60
+        render();
+      }, 1000);
+    }
+    function stopTimer() { clearInterval(timerId); }
+
+    function open() {
+      modal.classList.add('open');
+      startTimer();
+    }
+    function close() {
+      modal.classList.remove('open');
+      stopTimer();
+      try { sessionStorage.setItem('promoShown', '1'); } catch (e) {}
+    }
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+
+    // Показуємо один раз за сесію: через 8с АБО при прокрутці на 35% — що швидше
+    let triggered = false;
+    try { triggered = sessionStorage.getItem('promoShown') === '1'; } catch (e) {}
+    function trigger() {
+      if (triggered) return;
+      triggered = true;
+      open();
+    }
+    if (!triggered) {
+      setTimeout(trigger, 8000);
+      const onScroll = () => {
+        const pct = (window.scrollY + innerHeight) / document.body.scrollHeight;
+        if (pct > 0.35) { trigger(); window.removeEventListener('scroll', onScroll); }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    // Відправка форми
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name = document.getElementById('promoName').value.trim();
+      const phone = document.getElementById('promoPhone').value.trim();
+      if (!name || !phone) { alert("Будь ласка, заповни ім'я і телефон."); return; }
+      const btn = form.querySelector('.promo-submit');
+      const payload = {
+        type: 'lead', name, phone,
+        direction: 'Перше персональне (1 год у подарунок)',
+        message: '', source: 'Промо-попап (таймер)',
+        page: location.href, ts: new Date().toISOString()
+      };
+      btn.textContent = 'Надсилаємо...'; btn.disabled = true;
+      try {
+        if (typeof LEAD_ENDPOINT !== 'undefined' && LEAD_ENDPOINT && !LEAD_ENDPOINT.includes('PASTE')) {
+          await fetch(LEAD_ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload) });
+        }
+        if (typeof trackLead === 'function') trackLead(payload);
+        form.style.display = 'none';
+        success.classList.add('show');
+        stopTimer();
+        setTimeout(close, 3000);
+      } catch (err) {
+        alert('Не вдалося надіслати. Спробуй ще раз або напиши в Telegram.');
+        btn.textContent = 'Забрати годину в подарунок'; btn.disabled = false;
+      }
+    });
   })();
 </script>
 </body>
