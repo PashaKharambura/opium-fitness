@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Opium Fitness — твій спортивний клуб у Львові. CrossFit, бокс, Muay Thai, стретчинг, персональні тренування. Приєднуйся до спільноти." />
-  <title>Opium Fitness — Спортзал у Львові</title>
+  <meta name="description" content="Opium Fitness — тренажерний зал та фітнес-клуб у Львові. CrossFit, бокс, Muay Thai, стретчинг і персональні тренування. Перше заняття з тренером — безкоштовно. Знижка 25% для військових." />
+  <title>Opium Fitness — тренажерний зал та фітнес-клуб у Львові</title>
+  <link rel="canonical" href="https://pashakharambura.github.io/opium-fitness/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <meta name="author" content="Opium Fitness" />
+  <meta name="keywords" content="спортзал Львів, тренажерний зал Львів, фітнес клуб Львів, CrossFit Львів, бокс Львів, Muay Thai Львів, персональні тренування Львів, Opium Fitness" />
+  <!-- Geo -->
+  <meta name="geo.region" content="UA-46" />
+  <meta name="geo.placename" content="Львів" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/og-logo.png" />
@@ -14,16 +22,17 @@
   <!-- Open Graph / link preview -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Opium Fitness" />
-  <meta property="og:title" content="Opium Fitness — Спортзал у Львові" />
-  <meta property="og:description" content="Opium Fitness — твій спортивний клуб у Львові. CrossFit, бокс, Muay Thai, стретчинг, персональні тренування. Приєднуйся до спільноти." />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:title" content="Opium Fitness — тренажерний зал та фітнес-клуб у Львові" />
+  <meta property="og:description" content="Тренажерний зал та фітнес-клуб у Львові. CrossFit, бокс, Muay Thai, стретчинг і персональні тренування. Перше заняття з тренером — безкоштовно." />
   <meta property="og:url" content="https://pashakharambura.github.io/opium-fitness/" />
   <meta property="og:image" content="https://pashakharambura.github.io/opium-fitness/assets/og-logo.png" />
   <meta property="og:image:width" content="480" />
   <meta property="og:image:height" content="480" />
-  <meta property="og:image:alt" content="Opium Fitness" />
+  <meta property="og:image:alt" content="Opium Fitness — спортзал у Львові" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Opium Fitness — Спортзал у Львові" />
-  <meta name="twitter:description" content="Opium Fitness — твій спортивний клуб у Львові. CrossFit, бокс, Muay Thai, стретчинг, персональні тренування. Приєднуйся до спільноти." />
+  <meta name="twitter:title" content="Opium Fitness — тренажерний зал та фітнес-клуб у Львові" />
+  <meta name="twitter:description" content="Тренажерний зал та фітнес-клуб у Львові. CrossFit, бокс, Muay Thai, персональні тренування. Перше заняття — безкоштовно." />
   <meta name="twitter:image" content="https://pashakharambura.github.io/opium-fitness/assets/og-logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1337,6 +1346,55 @@
       .free-banner { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
     }
   </style>
+
+  <!-- Структуровані дані для Google (локальний бізнес / спортзал) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["HealthClub", "ExerciseGym"],
+    "@id": "https://pashakharambura.github.io/opium-fitness/#gym",
+    "name": "Opium Fitness",
+    "description": "Тренажерний зал та фітнес-клуб у Львові: CrossFit, бокс, Muay Thai, стретчинг і персональні тренування. Власний застосунок та перше заняття з тренером безкоштовно.",
+    "url": "https://pashakharambura.github.io/opium-fitness/",
+    "logo": "https://pashakharambura.github.io/opium-fitness/assets/og-logo.png",
+    "image": "https://pashakharambura.github.io/opium-fitness/assets/og-logo.png",
+    "telephone": "+380936020886",
+    "priceRange": "₴₴",
+    "currenciesAccepted": "UAH",
+    "paymentAccepted": "Готівка, Картка",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Львів",
+      "addressRegion": "Львівська область",
+      "addressCountry": "UA"
+    },
+    "areaServed": { "@type": "City", "name": "Львів" },
+    "sameAs": [
+      "https://www.instagram.com/opiumfitness.ua/",
+      "https://t.me/+380930033636",
+      "http://apps.apple.com/ar/app/opium/id6714474721",
+      "https://play.google.com/store/apps/details?id=com.softlab.opium"
+    ],
+    "makesOffer": {
+      "@type": "Offer",
+      "name": "Перше персональне заняття з тренером — безкоштовно",
+      "price": "0",
+      "priceCurrency": "UAH"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Абонементи Opium Fitness",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Разове відвідування", "price": "390", "priceCurrency": "UAH" },
+        { "@type": "Offer", "name": "Абонемент 1 місяць", "price": "2290", "priceCurrency": "UAH" },
+        { "@type": "Offer", "name": "Абонемент 3 місяці", "price": "5900", "priceCurrency": "UAH" },
+        { "@type": "Offer", "name": "Абонемент 6 місяців", "price": "9800", "priceCurrency": "UAH" },
+        { "@type": "Offer", "name": "Абонемент 12 місяців", "price": "14900", "priceCurrency": "UAH" },
+        { "@type": "Offer", "name": "CrossFit — 10 тренувань", "price": "4500", "priceCurrency": "UAH" }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -1396,7 +1454,7 @@
           <span class="p">Community</span>
         </h1>
         <p class="hero-desc">
-          Opium Fitness — місце де трансформуються тіла і характери. CrossFit, бокс, Muay Thai, стретчинг і персональні тренування в одному просторі.
+          Opium Fitness — сучасний тренажерний зал і фітнес-клуб у Львові, де трансформуються тіла і характери. CrossFit, бокс, Muay Thai, стретчинг і персональні тренування в одному просторі.
         </p>
         <div class="hero-hook">
           <span class="hero-hook-flame" aria-hidden="true">

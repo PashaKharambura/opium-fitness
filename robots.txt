@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pashakharambura.github.io/opium-fitness/sitemap.xml
