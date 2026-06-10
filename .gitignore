@@ -1,2 +1,5 @@
 .DS_Store
 Thumbs.db
+
+# Локальний бекенд з секретами (токен Telegram)
+backend/apps-script.gs
