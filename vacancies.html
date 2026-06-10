@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Вакансії в Opium Fitness — спортивний клуб у Львові шукає тренерів, адміністраторів і продавця-консультанта на спорт-бар. Приєднуйся до команди." />
+  <title>Вакансії — Opium Fitness</title>
+
+  <link rel="icon" type="image/png" href="assets/og-logo.png" />
+  <link rel="icon" type="image/webp" href="assets/logo.webp" />
+  <link rel="apple-touch-icon" href="assets/og-logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Opium Fitness" />
+  <meta property="og:title" content="Вакансії — Opium Fitness" />
+  <meta property="og:description" content="Спортивний клуб Opium у Львові шукає тренерів, адміністраторів і продавця-консультанта на спорт-бар." />
+  <meta property="og:url" content="https://opium-fitness.netlify.app/vacancies.html" />
+  <meta property="og:image" content="https://opium-fitness.netlify.app/assets/og-logo.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:#0A0A0A; --bg-card:#111111; --bg-card2:#161616;
+      --cyan:#5CE0D8; --cyan-d:#3ECFC7; --pink:#FF2070;
+      --text:#F0F2F5; --muted:#6B7280; --border:rgba(92,224,216,.12);
+      --glow-c:0 0 28px rgba(92,224,216,.3); --glow-p:0 0 28px rgba(255,32,112,.3);
+      --r:12px; --nav-h:68px;
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'Barlow',sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden; }
+    img { display:block; max-width:100%; }
+    a { text-decoration:none; color:inherit; }
+    button { cursor:pointer; border:none; background:none; font-family:inherit; }
+
+    .container { width:100%; max-width:1200px; margin:0 auto; padding:0 24px; }
+    .label { display:inline-block; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--cyan); margin-bottom:14px; }
+    .section-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(36px,5vw,56px); font-weight:900; line-height:1.0; text-transform:uppercase; letter-spacing:-.01em; }
+    .section-title .c { color:var(--cyan); } .section-title .p { color:var(--pink); }
+    .neon-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--cyan) 35%,var(--pink) 65%,transparent); opacity:.4; }
+
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 28px; border-radius:8px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; transition:all 200ms ease; cursor:pointer; }
+    .btn-primary { background:var(--cyan); color:#0A0A0A; box-shadow:var(--glow-c); }
+    .btn-primary:hover { background:#74e8e0; box-shadow:0 0 40px rgba(92,224,216,.5); transform:translateY(-1px); }
+    .btn-outline { background:transparent; color:var(--text); border:1.5px solid rgba(240,242,245,.18); }
+    .btn-outline:hover { border-color:var(--cyan); color:var(--cyan); }
+    .btn-insta { background:linear-gradient(135deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888); color:#fff; }
+    .btn-insta:hover { opacity:.9; transform:translateY(-1px); }
+
+    /* NAV */
+    .nav { position:fixed; top:10px; left:10px; right:10px; z-index:50; background:rgba(10,10,10,.88); backdrop-filter:blur(20px); border:1px solid var(--border); border-radius:14px; height:var(--nav-h); display:flex; align-items:center; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; width:100%; padding:0 20px; }
+    .nav-logo-wrap { display:flex; align-items:center; gap:10px; cursor:pointer; }
+    .nav-logo-mark { width:34px; height:34px; flex-shrink:0; border-radius:8px; object-fit:cover; }
+    .nav-logo-word { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; color:var(--cyan); line-height:1; }
+    .nav-links { display:flex; align-items:center; gap:28px; }
+    .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); transition:color 200ms; }
+    .nav-links a:hover, .nav-links a.active { color:var(--cyan); }
+    .nav-burger { display:none; flex-direction:column; gap:5px; padding:8px; }
+    .nav-burger span { width:20px; height:2px; background:var(--text); border-radius:2px; }
+    .mobile-menu { display:none; position:fixed; top:calc(var(--nav-h) + 18px); left:10px; right:10px; z-index:49; background:rgba(10,10,10,.97); backdrop-filter:blur(20px); border:1px solid var(--border); border-radius:14px; padding:18px; flex-direction:column; gap:6px; }
+    .mobile-menu.show { display:flex; }
+    .mobile-menu a { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--text); padding:10px 8px; }
+
+    /* HERO */
+    .vh { padding-top:calc(var(--nav-h) + 80px); padding-bottom:60px; position:relative; overflow:hidden; }
+    .vh-bg { position:absolute; inset:0; z-index:0; background:
+      radial-gradient(ellipse 50% 50% at 75% 30%, rgba(92,224,216,.10), transparent 70%),
+      radial-gradient(ellipse 40% 45% at 15% 80%, rgba(255,32,112,.08), transparent 65%); }
+    .vh-bg::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(92,224,216,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(92,224,216,.03) 1px,transparent 1px); background-size:64px 64px; }
+    .vh-inner { position:relative; z-index:1; max-width:640px; }
+    .vh h1 { font-family:'Barlow Condensed',sans-serif; font-size:clamp(40px,6.5vw,72px); font-weight:900; line-height:.98; text-transform:uppercase; letter-spacing:-.01em; margin-bottom:20px; }
+    .vh p { color:var(--muted); font-size:16px; line-height:1.75; max-width:520px; margin-bottom:30px; }
+    .vh-actions { display:flex; flex-wrap:wrap; gap:12px; }
+
+    /* VACANCY CARDS */
+    .vac-wrap { padding:40px 0 90px; }
+    .vac-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; margin-top:8px; }
+    .vac-card { background:var(--bg-card); border:1px solid var(--border); border-radius:18px; padding:30px 26px; display:flex; flex-direction:column; position:relative; overflow:hidden; transition:border-color 220ms ease, transform 220ms ease; }
+    .vac-card:hover { border-color:rgba(92,224,216,.35); transform:translateY(-3px); }
+    .vac-card.pink:hover { border-color:rgba(255,32,112,.4); }
+    .vac-glow { position:absolute; top:-40px; right:-40px; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle,rgba(92,224,216,.18),transparent 70%); pointer-events:none; }
+    .vac-card.pink .vac-glow { background:radial-gradient(circle,rgba(255,32,112,.18),transparent 70%); }
+    .vac-icon { width:46px; height:46px; border-radius:12px; background:rgba(92,224,216,.1); display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+    .vac-card.pink .vac-icon { background:rgba(255,32,112,.1); }
+    .vac-icon svg { width:24px; height:24px; color:var(--cyan); }
+    .vac-card.pink .vac-icon svg { color:var(--pink); }
+    .vac-title { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:800; text-transform:uppercase; letter-spacing:.01em; line-height:1.05; margin-bottom:8px; }
+    .vac-sub { font-size:13px; color:var(--cyan); font-family:'Barlow Condensed',sans-serif; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:16px; }
+    .vac-card.pink .vac-sub { color:var(--pink); }
+    .vac-list { list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:18px; }
+    .vac-list li { position:relative; padding-left:22px; font-size:14px; color:#C7CBD1; line-height:1.5; }
+    .vac-list li::before { content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:50%; background:var(--cyan); }
+    .vac-card.pink .vac-list li::before { background:var(--pink); }
+    .vac-schedule { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+    .vac-shift { border:1.5px solid rgba(92,224,216,.3); border-radius:10px; padding:9px 14px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:16px; letter-spacing:.02em; }
+    .vac-shift.p { border-color:rgba(255,32,112,.4); color:#fff; }
+    .vac-foot { margin-top:auto; padding-top:16px; border-top:1px solid rgba(255,255,255,.06); }
+    .vac-phone-label { font-size:11px; color:var(--muted); font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px; }
+    .vac-phone { display:inline-flex; align-items:center; gap:8px; font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:800; color:var(--text); margin-bottom:14px; }
+    .vac-phone svg { width:18px; height:18px; color:var(--cyan); }
+    .vac-card.pink .vac-phone svg { color:var(--pink); }
+    .vac-apply { width:100%; }
+
+    /* FORM */
+    .apply-section { padding:0 0 96px; }
+    .apply-card { background:linear-gradient(135deg,rgba(92,224,216,.05),rgba(255,32,112,.04)); border:1px solid var(--border); border-radius:22px; padding:44px; display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
+    .apply-left h2 { margin-bottom:16px; }
+    .apply-left p { color:var(--muted); font-size:14px; line-height:1.75; }
+    .form-group { margin-bottom:16px; }
+    .form-group label { display:block; font-size:12px; color:var(--muted); margin-bottom:7px; font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:.08em; }
+    .form-group input, .form-group select, .form-group textarea { width:100%; background:var(--bg); border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:13px 15px; color:var(--text); font-family:'Barlow',sans-serif; font-size:15px; transition:border-color 200ms; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--cyan); }
+    .form-group textarea { resize:vertical; min-height:80px; }
+    .form-submit { width:100%; background:var(--cyan); color:#0A0A0A; border-radius:10px; padding:15px; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:16px; text-transform:uppercase; letter-spacing:.06em; box-shadow:var(--glow-c); transition:all 200ms; }
+    .form-submit:hover:not(:disabled) { background:#74e8e0; transform:translateY(-1px); }
+    .form-submit:disabled { opacity:.6; cursor:not-allowed; }
+    .form-note { font-size:11px; color:var(--muted); margin-top:12px; text-align:center; }
+    .success-msg { display:none; margin-top:16px; padding:16px; background:rgba(92,224,216,.08); border:1px solid rgba(92,224,216,.3); border-radius:10px; text-align:center; }
+    .success-msg.show { display:block; }
+    .success-msg p { color:var(--cyan); font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; }
+    .success-msg small { color:var(--muted); font-size:13px; }
+
+    /* FOOTER */
+    .footer { border-top:1px solid var(--border); padding:32px 0; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .footer-logo-wrap { display:flex; align-items:center; gap:8px; }
+    .footer-logo-word { font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:.08em; color:var(--cyan); }
+    .footer-links { display:flex; gap:20px; flex-wrap:wrap; }
+    .footer-links a { font-size:12px; color:var(--muted); transition:color 200ms; }
+    .footer-links a:hover { color:var(--cyan); }
+    .footer-copy { font-size:12px; color:var(--muted); }
+
+    /* FLOAT CHAT */
+    .float-chat { position:fixed; right:20px; bottom:20px; z-index:60; display:inline-flex; align-items:center; gap:9px; background:#229ED9; color:#fff; padding:13px 18px 13px 15px; border-radius:100px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:15px; letter-spacing:.02em; text-transform:uppercase; box-shadow:0 8px 28px rgba(34,158,217,.45); transition:transform 200ms ease; }
+    .float-chat:hover { transform:translateY(-2px); }
+    .float-chat svg { width:22px; height:22px; }
+
+    @media (max-width:860px) {
+      .nav-links { display:none; }
+      .nav-burger { display:flex; }
+      .apply-card { grid-template-columns:1fr; gap:28px; padding:30px 22px; }
+    }
+    @media (max-width:560px) {
+      .float-chat { right:14px; bottom:14px; padding:13px; }
+      .float-chat .float-chat-label { display:none; }
+    }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto; } .float-chat,.vac-card { transition:none; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo-wrap" aria-label="Opium Fitness — на головну">
+      <img src="assets/logo.webp" alt="Opium Fitness" class="nav-logo-mark" />
+      <span class="nav-logo-word">Opium</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#gallery">Зал</a>
+      <a href="index.html#directions">Напрямки</a>
+      <a href="index.html#prices">Ціни</a>
+      <a href="vacancies.html" class="active">Вакансії</a>
+      <a href="index.html#contact">Контакти</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="index.html#contact" class="btn btn-primary" style="padding:9px 16px;font-size:13px;">На головну</a>
+      <button class="nav-burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#gallery">Зал</a>
+  <a href="index.html#directions">Напрямки</a>
+  <a href="index.html#prices">Ціни</a>
+  <a href="vacancies.html">Вакансії</a>
+  <a href="index.html#contact">Контакти</a>
+</div>
+
+<!-- HERO -->
+<header class="vh">
+  <div class="vh-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="vh-inner">
+      <div class="label">Кар'єра в Opium</div>
+      <h1>Стань частиною<br/><span style="color:var(--cyan);">нашої команди</span></h1>
+      <p>Opium Fitness росте — і нам потрібні люди, які горять спортом і сервісом. Обери вакансію, дзвони або залиш відгук — ми звʼяжемося.</p>
+      <div class="vh-actions">
+        <a href="#apply" class="btn btn-primary">Залишити відгук</a>
+        <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-insta">Instagram</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- VACANCIES -->
+<section class="vac-wrap">
+  <div class="container">
+    <div class="label">Відкриті позиції</div>
+    <h2 class="section-title">Вакансії<span class="c">.</span></h2>
+
+    <div class="vac-grid">
+
+      <!-- ТРЕНЕР -->
+      <article class="vac-card">
+        <div class="vac-glow" aria-hidden="true"></div>
+        <div class="vac-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11v11h-11z"/><path d="M4 4l2.5 2.5M20 4l-2.5 2.5M4 20l2.5-2.5M20 20l-2.5-2.5"/></svg>
+        </div>
+        <div class="vac-title">Тренер</div>
+        <div class="vac-sub">Тренерський склад</div>
+        <ul class="vac-list">
+          <li>Проведення персональних і групових тренувань</li>
+          <li>Складання програм під цілі клієнта</li>
+          <li>Підтримка та мотивація спільноти</li>
+          <li>Досвід або профільна освіта — перевага</li>
+        </ul>
+        <div class="vac-foot">
+          <div class="vac-phone-label">Номер для звʼязку</div>
+          <a href="tel:+380936020886" class="vac-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.07 6.07l1.17-1.17a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            093 602 08 86
+          </a>
+          <a href="#apply" class="btn btn-outline vac-apply" data-vacancy="Тренер">Відгукнутись</a>
+        </div>
+      </article>
+
+      <!-- АДМІНІСТРАТОР -->
+      <article class="vac-card">
+        <div class="vac-glow" aria-hidden="true"></div>
+        <div class="vac-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>
+        </div>
+        <div class="vac-title">Адміністратор</div>
+        <div class="vac-sub">Графік позмінний</div>
+        <ul class="vac-list">
+          <li>Зустріч і супровід клієнтів на рецепції</li>
+          <li>Робота з CRM, дзвінки, запис на тренування</li>
+          <li>Контроль порядку та атмосфери в клубі</li>
+        </ul>
+        <div class="vac-schedule">
+          <span class="vac-shift">07:00 — 15:00</span>
+          <span class="vac-shift p">15:00 — 22:30</span>
+        </div>
+        <div class="vac-foot">
+          <div class="vac-phone-label">Номер для звʼязку</div>
+          <a href="tel:+380936020886" class="vac-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.07 6.07l1.17-1.17a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            093 602 08 86
+          </a>
+          <a href="#apply" class="btn btn-outline vac-apply" data-vacancy="Адміністратор">Відгукнутись</a>
+        </div>
+      </article>
+
+      <!-- ПРОДАВЕЦЬ-КОНСУЛЬТАНТ -->
+      <article class="vac-card pink">
+        <div class="vac-glow" aria-hidden="true"></div>
+        <div class="vac-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <div class="vac-title">Продавець-консультант</div>
+        <div class="vac-sub">На спорт-бар</div>
+        <ul class="vac-list">
+          <li>Продаж спортивного харчування та напоїв</li>
+          <li>Консультування клієнтів щодо продукції</li>
+          <li>Облік товару та підтримка вітрини</li>
+        </ul>
+        <div class="vac-foot">
+          <div class="vac-phone-label">Номер для звʼязку</div>
+          <a href="tel:+380989227993" class="vac-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.36 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.07 6.07l1.17-1.17a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            098 922 79 93
+          </a>
+          <a href="#apply" class="btn btn-outline vac-apply" data-vacancy="Продавець-консультант (спорт-бар)">Відгукнутись</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- APPLY FORM -->
+<section class="apply-section" id="apply" style="padding-top:80px;">
+  <div class="container">
+    <div class="apply-card">
+      <div class="apply-left">
+        <div class="label">Відгук на вакансію</div>
+        <h2 class="section-title">Залиш<br/><span class="c">контакти</span></h2>
+        <p>Заповни форму — і ми звʼяжемося, щоб познайомитись і розповісти деталі. Або просто подзвони на номер обраної вакансії.</p>
+      </div>
+      <div class="apply-right">
+        <form id="applyForm" novalidate>
+          <div class="form-group">
+            <label for="aname">Імʼя *</label>
+            <input type="text" id="aname" placeholder="Твоє імʼя" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="aphone">Телефон *</label>
+            <input type="tel" id="aphone" placeholder="+380 XX XXX XX XX" required autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="avacancy">Вакансія</label>
+            <select id="avacancy">
+              <option>Тренер</option>
+              <option>Адміністратор</option>
+              <option>Продавець-консультант (спорт-бар)</option>
+              <option>Інша / ще не визначився</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="amessage">Про себе / досвід</label>
+            <textarea id="amessage" placeholder="Коротко про досвід, графік, побажання..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Надіслати відгук</button>
+          <p class="form-note">Натискаючи кнопку, ти погоджуєшся на обробку персональних даних.</p>
+          <div class="success-msg" id="successMsg" role="alert">
+            <p>Відгук отримано!</p>
+            <small>Звʼяжемося з тобою найближчим часом 💪</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo-wrap">
+        <img src="assets/logo.webp" alt="Opium Fitness" width="28" height="28" style="border-radius:6px;" />
+        <span class="footer-logo-word">OPIUM FITNESS</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer навігація">
+        <a href="index.html">На головну</a>
+        <a href="vacancies.html">Вакансії</a>
+        <a href="index.html#contact">Контакти</a>
+        <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <div class="footer-copy">© 2025 Opium Fitness. Львів, Україна.</div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://t.me/+380936020886" target="_blank" rel="noopener" class="float-chat" aria-label="Написати в Telegram">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.46 18.9 19.2c-.23 1.02-.84 1.27-1.7.79l-4.7-3.46-2.27 2.18c-.25.25-.46.46-.94.46l.33-4.78L18.6 6.1c.38-.34-.08-.53-.6-.19L6.9 13.05l-4.7-1.47c-1.02-.32-1.04-1.02.21-1.51l18.36-7.08c.85-.31 1.6.2 1.32 1.47z"/></svg>
+  <span class="float-chat-label">Telegram</span>
+</a>
+
+<script>
+  // Burger
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('show'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('show')));
+
+  // Prefill vacancy when clicking "Відгукнутись"
+  document.querySelectorAll('[data-vacancy]').forEach(el => {
+    el.addEventListener('click', () => {
+      const v = el.getAttribute('data-vacancy');
+      const sel = document.getElementById('avacancy');
+      [...sel.options].forEach(o => { if (o.value === v || o.text === v) sel.value = o.value; });
+    });
+  });
+
+  // Lead endpoint (той самий Apps Script, що й для клієнтів)
+  const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw-1FS4LTK7VlNPhpSFl5zQKzGBq_hmu8Kcs6gbxXRy0P29u0Od_iv4lM5jKbkoAS4-Uw/exec';
+
+  function trackLead(d) {
+    try {
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'vacancy:' + (d.direction || '') });
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+    } catch (_) {}
+  }
+
+  document.getElementById('applyForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = document.getElementById('aname').value.trim();
+    const phone = document.getElementById('aphone').value.trim();
+    if (!name || !phone) { alert("Будь ласка, заповни імʼя і телефон."); return; }
+    const btn = e.target.querySelector('.form-submit');
+    const payload = {
+      name, phone,
+      direction: 'Вакансія: ' + document.getElementById('avacancy').value,
+      message: document.getElementById('amessage').value.trim(),
+      source: 'Сторінка вакансій',
+      page: location.href,
+      ts: new Date().toISOString()
+    };
+    btn.textContent = 'Надсилаємо...'; btn.disabled = true;
+    try {
+      if (LEAD_ENDPOINT && !LEAD_ENDPOINT.includes('PASTE')) {
+        await fetch(LEAD_ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload) });
+      }
+      trackLead(payload);
+      e.target.reset();
+      document.getElementById('successMsg').classList.add('show');
+    } catch (err) {
+      alert("Не вдалося надіслати. Подзвони на номер вакансії або напиши в Telegram.");
+    } finally {
+      btn.textContent = 'Надіслати відгук'; btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
