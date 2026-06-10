@@ -1153,6 +1153,12 @@
     }
     .tier-price span { font-size: 12px; font-weight: 600; opacity: .7; }
     .price-tiers-foot { padding: 18px 26px; margin-top: auto; }
+    .mil-note {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      margin-top: 12px; font-size: 12.5px; color: var(--muted); line-height: 1.4;
+    }
+    .mil-note svg { color: var(--cyan); flex-shrink: 0; }
+    .mil-note strong { color: var(--cyan); font-weight: 700; }
 
     /* CrossFit special card */
     .crossfit-card {
@@ -1777,6 +1783,10 @@
         </div>
         <div class="price-tiers-foot">
           <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="scrollToApp()">Оформити в застосунку</button>
+          <p class="mil-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/></svg>
+            Для військовослужбовців — знижка <strong>25%</strong>
+          </p>
         </div>
       </div>
 
