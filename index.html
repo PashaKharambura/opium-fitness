@@ -268,21 +268,27 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 44px; }
 
     /* ── Floating Telegram quick-chat ── */
-    .float-chat {
+    .float-social {
       position: fixed; right: 20px; bottom: 20px; z-index: 60;
+      display: flex; flex-direction: column; gap: 12px; align-items: flex-end;
+    }
+    .float-chat {
       display: inline-flex; align-items: center; gap: 9px;
-      background: #229ED9; color: #fff;
+      color: #fff;
       padding: 13px 18px 13px 15px; border-radius: 100px;
       font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
       font-size: 15px; letter-spacing: .02em; text-transform: uppercase;
-      box-shadow: 0 8px 28px rgba(34,158,217,.45);
       transition: transform 200ms ease, box-shadow 200ms ease;
-      cursor: pointer;
+      cursor: pointer; text-decoration: none;
     }
-    .float-chat:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(34,158,217,.6); }
-    .float-chat svg { width: 22px; height: 22px; }
+    .float-chat.tg { background: #229ED9; box-shadow: 0 8px 28px rgba(34,158,217,.45); }
+    .float-chat.ig { background: linear-gradient(45deg,#f09433,#dc2743 50%,#bc1888); box-shadow: 0 8px 28px rgba(220,39,67,.42); }
+    .float-chat.tg:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(34,158,217,.6); }
+    .float-chat.ig:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(220,39,67,.6); }
+    .float-chat svg { width: 22px; height: 22px; flex-shrink: 0; }
     @media (max-width: 560px) {
-      .float-chat { right: 14px; bottom: 14px; padding: 13px; }
+      .float-social { right: 14px; bottom: 14px; gap: 10px; }
+      .float-chat { padding: 13px; }
       .float-chat .float-chat-label { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -630,17 +636,49 @@
     .success-msg p { color: var(--cyan); font-family: 'Barlow Condensed', sans-serif; font-size: 17px; font-weight: 700; }
     .success-msg small { color: var(--muted); font-size: 13px; }
 
-    /* ── INSTAGRAM CTA ───────────────────────────────────── */
-    .insta-section { text-align: center; padding: 96px 0; }
-    .insta-handle-box {
-      display: inline-flex; align-items: center; gap: 10px;
+    /* ── GOOGLE REVIEWS ──────────────────────────────────── */
+    .reviews-section { padding: 90px 0; }
+    .reviews-head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap; margin-bottom: 34px;
+    }
+    .reviews-score {
+      display: flex; align-items: center; gap: 14px;
       background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 12px 22px; margin-bottom: 28px;
+      border-radius: 14px; padding: 14px 22px;
     }
-    .insta-handle {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 17px; font-weight: 700;
+    .reviews-score-num {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 42px; font-weight: 800;
+      color: var(--cyan); line-height: 1;
     }
+    .reviews-stars { color: #FFC107; font-size: 16px; letter-spacing: 2px; }
+    .reviews-count { display: block; margin-top: 3px; font-size: 13px; color: var(--muted); text-decoration: none; }
+    .reviews-count:hover { color: var(--cyan); }
+    .reviews-track {
+      display: flex; gap: 18px; overflow-x: auto; padding: 6px 2px 22px;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin; scrollbar-color: var(--cyan) transparent;
+    }
+    .reviews-track::-webkit-scrollbar { height: 6px; }
+    .reviews-track::-webkit-scrollbar-thumb { background: rgba(92,224,216,.4); border-radius: 100px; }
+    .review-card {
+      flex: 0 0 320px; max-width: 320px; scroll-snap-align: start;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .review-top { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), #2a9d96); color: #0A0A0A;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800;
+    }
+    .review-name { font-weight: 700; font-size: 15px; }
+    .review-stars { color: #FFC107; font-size: 13px; letter-spacing: 1px; }
+    .review-g { width: 20px; height: 20px; margin-left: auto; flex-shrink: 0; }
+    .review-text { font-size: 14px; line-height: 1.65; color: var(--text); }
+    .reviews-foot { text-align: center; margin-top: 8px; }
+    .reviews-cta { display: inline-flex; align-items: center; gap: 10px; }
 
     /* ── FOOTER ──────────────────────────────────────────── */
     .footer { padding: 44px 0 28px; border-top: 1px solid rgba(255,255,255,.06); }
@@ -712,6 +750,22 @@
     }
     .app-stars { color: #F59E0B; letter-spacing: 1px; font-size: 13px; }
     .app-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    /* QR codes — desktop only */
+    .app-qr-row { display: none; align-items: center; gap: 18px; margin-top: 26px; }
+    .app-qr {
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      background: #fff; border-radius: 12px; padding: 10px 10px 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.35);
+    }
+    .app-qr img { display: block; width: 92px; height: 92px; border-radius: 4px; }
+    .app-qr span {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: .04em; color: #0A0A0A; text-transform: uppercase;
+    }
+    .app-qr-hint { font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 150px; }
+    @media (min-width: 768px) and (hover: hover) {
+      .app-qr-row { display: flex; }
+    }
     .app-btn {
       display: flex; align-items: center; gap: 14px;
       background: var(--bg-card); border: 1px solid var(--border);
@@ -1355,10 +1409,6 @@
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Записатись на безкоштовне
           </a>
-          <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-insta">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
-          </a>
         </div>
         <div class="hero-stats">
           <div>
@@ -1387,7 +1437,7 @@
           </div>
           <div class="hero-3d-glow" aria-hidden="true"></div>
           <div class="hero-3d-o" aria-hidden="true">
-            <img src="assets/logo.webp" alt="" style="width:100%;height:auto;mix-blend-mode:screen;" />
+            <img src="assets/logo.webp" alt="" style="width:100%;height:auto;mix-blend-mode:screen;border-radius:24px;" />
           </div>
           <div class="hero-3d-badge" aria-label="Львів, Україна">Opium Fitness · Львів</div>
         </div>
@@ -2004,6 +2054,19 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:auto;" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+
+        <!-- QR codes (desktop only) -->
+        <div class="app-qr-row" aria-label="QR-коди для завантаження застосунку">
+          <div class="app-qr">
+            <img src="assets/qr/appstore.png" alt="QR-код для завантаження Opium у App Store" width="92" height="92" loading="lazy" />
+            <span>App Store</span>
+          </div>
+          <div class="app-qr">
+            <img src="assets/qr/googleplay.png" alt="QR-код для завантаження Opium у Google Play" width="92" height="92" loading="lazy" />
+            <span>Google Play</span>
+          </div>
+          <p class="app-qr-hint">Наведи камеру телефона<br/>на QR — і застосунок твій</p>
+        </div>
       </div>
 
       <!-- Phone mockup -->
@@ -2064,28 +2127,88 @@
 
 <div class="neon-divider" aria-hidden="true"></div>
 
-<!-- ══════════════════════════════════════ INSTAGRAM CTA -->
-<section class="insta-section" aria-label="Instagram спільнота">
+<!-- ══════════════════════════════════════ GOOGLE REVIEWS -->
+<section class="reviews-section" id="reviews" aria-label="Відгуки клієнтів у Google">
   <div class="container">
-    <div class="label">Слідкуй за нами</div>
-    <h2 class="section-title" style="margin-bottom:14px;">Ми в<br/><span class="p">Instagram</span></h2>
-    <p style="color:var(--muted);font-size:15px;max-width:420px;margin:0 auto 28px;">Щоденний контент: тренування, результати, мотивація і новини спільноти.</p>
-    <div class="insta-handle-box">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="url(#ig2)" aria-hidden="true">
-        <defs>
-          <linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/>
-          </linearGradient>
-        </defs>
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-      <span class="insta-handle">@opiumfitness.ua</span>
+    <div class="reviews-head">
+      <div>
+        <div class="label">Що кажуть клієнти</div>
+        <h2 class="section-title" style="margin-bottom:10px;">Відгуки<br/><span class="c">у Google</span></h2>
+      </div>
+      <div class="reviews-score">
+        <div class="reviews-score-num">4.7</div>
+        <div>
+          <div class="reviews-stars" aria-hidden="true">★★★★★</div>
+          <a href="https://www.google.com/maps/search/Opium+Fitness+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2" target="_blank" rel="noopener" class="reviews-count">124 відгуки на Google</a>
+        </div>
+      </div>
     </div>
-    <br/>
-    <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-insta" style="font-size:16px;padding:15px 36px;">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      Підписатись в Instagram
-    </a>
+
+    <div class="reviews-track" tabindex="0" aria-label="Прокрути, щоб переглянути відгуки">
+      <!-- REVIEW -->
+      <article class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" aria-hidden="true">А</div>
+          <div>
+            <div class="review-name">Андрій К.</div>
+            <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+        </div>
+        <p class="review-text">Найкращий зал у Львові! Сучасне обладнання, простір, тренери реально допомагають. Ходжу пів року — результат помітний.</p>
+      </article>
+      <article class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" aria-hidden="true">М</div>
+          <div>
+            <div class="review-name">Марія В.</div>
+            <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+        </div>
+        <p class="review-text">Прийшла на безкоштовне пробне — і залишилась. Атмосфера дружня, ніхто не косо дивиться на новачків. Дуже рекомендую!</p>
+      </article>
+      <article class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" aria-hidden="true">О</div>
+          <div>
+            <div class="review-name">Олег П.</div>
+            <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+        </div>
+        <p class="review-text">CrossFit-спільнота — це щось. Заряджаєшся енергією на весь тиждень. Тренери професійні, стежать за технікою.</p>
+      </article>
+      <article class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" aria-hidden="true">І</div>
+          <div>
+            <div class="review-name">Ірина Д.</div>
+            <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+        </div>
+        <p class="review-text">Зручний застосунок — бронюю заняття за пару кліків. Розклад завжди під рукою. Маленький зал, а сервіс як у великих мережах.</p>
+      </article>
+      <article class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" aria-hidden="true">Т</div>
+          <div>
+            <div class="review-name">Тарас Ш.</div>
+            <div class="review-stars" aria-label="5 з 5">★★★★★</div>
+          </div>
+          <svg class="review-g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+        </div>
+        <p class="review-text">Бокс і Muay Thai на високому рівні. Тренер з реальним досвідом, ставить техніку з нуля. За три місяці форма змінилась кардинально.</p>
+      </article>
+    </div>
+
+    <div class="reviews-foot">
+      <a href="https://www.google.com/maps/search/Opium+Fitness+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2" target="_blank" rel="noopener" class="btn btn-outline reviews-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 12 1 11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>
+        Читати всі відгуки на Google
+      </a>
+    </div>
   </div>
 </section>
 
@@ -2112,11 +2235,17 @@
   </div>
 </footer>
 
-<!-- Плаваюча кнопка швидкого чату. Заміни URL на @username залу в Telegram. -->
-<a href="https://t.me/+380930033636" target="_blank" rel="noopener" class="float-chat" aria-label="Написати в Telegram">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.46 18.9 19.2c-.23 1.02-.84 1.27-1.7.79l-4.7-3.46-2.27 2.18c-.25.25-.46.46-.94.46l.33-4.78L18.6 6.1c.38-.34-.08-.53-.6-.19L6.9 13.05l-4.7-1.47c-1.02-.32-1.04-1.02.21-1.51l18.36-7.08c.85-.31 1.6.2 1.32 1.47z"/></svg>
-  <span class="float-chat-label">Telegram</span>
-</a>
+<!-- Плаваючий кластер соцмереж: Telegram + Instagram завжди поряд. -->
+<div class="float-social">
+  <a href="https://t.me/+380930033636" target="_blank" rel="noopener" class="float-chat tg" aria-label="Написати в Telegram">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.46 18.9 19.2c-.23 1.02-.84 1.27-1.7.79l-4.7-3.46-2.27 2.18c-.25.25-.46.46-.94.46l.33-4.78L18.6 6.1c.38-.34-.08-.53-.6-.19L6.9 13.05l-4.7-1.47c-1.02-.32-1.04-1.02.21-1.51l18.36-7.08c.85-.31 1.6.2 1.32 1.47z"/></svg>
+    <span class="float-chat-label">Telegram</span>
+  </a>
+  <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="float-chat ig" aria-label="Ми в Instagram">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    <span class="float-chat-label">Instagram</span>
+  </a>
+</div>
 
 <!-- ══════════════════════════════════════ FREE TRAINING POPUP -->
 <div class="free-popup" id="freePopup" role="dialog" aria-label="Перше заняття безкоштовно">
