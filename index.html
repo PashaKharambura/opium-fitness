@@ -95,6 +95,36 @@
     .section-title .c { color: var(--cyan); }
     .section-title .p { color: var(--pink); }
 
+    /* ── FAQ (accordion) ─────────────────────────────────── */
+    .faq-section { padding: 92px 0; }
+    .faq-list {
+      max-width: 760px; margin: 44px auto 0;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      transition: border-color 200ms;
+    }
+    .faq-item[open] { border-color: rgba(92,224,216,.35); }
+    .faq-q {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 22px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 19px; font-weight: 700; letter-spacing: .01em;
+      color: var(--text);
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q:hover { color: var(--cyan); }
+    .faq-chevron { flex-shrink: 0; color: var(--cyan); transition: transform 250ms ease; }
+    .faq-item[open] .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
+      padding: 0 22px 22px; margin: 0;
+      font-size: 15px; line-height: 1.7; color: var(--muted);
+    }
+    .faq-a a { color: var(--cyan); }
+
     .neon-divider {
       width: 100%;
       height: 1px;
@@ -253,6 +283,14 @@
     }
     .hero-title .c { color: var(--cyan); }
     .hero-title .p { color: var(--pink); }
+    .hero-title-kw {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(14px, 1.6vw, 17px);
+      font-weight: 600; line-height: 1.4;
+      text-transform: none; letter-spacing: 0;
+      color: var(--muted); margin-top: 18px;
+    }
 
     .hero-desc {
       font-size: 16px; color: var(--muted);
@@ -1395,6 +1433,64 @@
     }
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://pashakharambura.github.io/opium-fitness/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Скільки коштує абонемент у Opium Fitness?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Разове відвідування тренажерного залу — від 390 грн. Місячний абонемент — від 2290 грн, є вигідні пакети на 3, 6 і 12 місяців та персональні тренування. Для військовослужбовців діє знижка 25%. Актуальні ціни — у розділі «Ціни» та в застосунку Opium Fitness."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи можна спробувати тренування перед покупкою абонемента?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. Перше заняття з тренером у Opium Fitness — безкоштовне, без передоплати та зобов'язань. Залиш заявку на сайті — і ми підберемо зручний час."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Які напрямки тренувань є в залі Opium Fitness?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "У нас тренажерний зал для самостійних тренувань, CrossFit, бокс, Muay Thai, самооборона, стретчинг і Barre, а також персональні тренування з тренером. Понад 10 тренерів допоможуть із будь-якою ціллю — від схуднення до підготовки до змагань."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Який графік роботи Opium Fitness у Львові?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Понеділок — субота: 07:00–22:30. Неділя: 09:00–21:00. Розклад групових занять — у застосунку або в Instagram."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Де знаходиться зал Opium Fitness?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Opium Fitness розташований у Львові. Точну адресу, маршрут і паркування дивись у блоці контактів унизу сторінки або напиши нам в Instagram — підкажемо, як зручно дістатися."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи є у Opium Fitness власний застосунок?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. Через застосунок Opium Fitness можна бронювати заняття, відстежувати прогрес, бачити розклад і оплачувати абонементи. Він доступний для iPhone в App Store та для Android у Google Play."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -1452,6 +1548,7 @@
           Твоє<br/>
           <span class="c">Healthy</span><br/>
           <span class="p">Community</span>
+          <span class="hero-title-kw">Тренажерний зал та фітнес-клуб у Львові</span>
         </h1>
         <p class="hero-desc">
           Opium Fitness — сучасний тренажерний зал і фітнес-клуб у Львові, де трансформуються тіла і характери. CrossFit, бокс, Muay Thai, стретчинг і персональні тренування в одному просторі.
@@ -1495,7 +1592,7 @@
           </div>
           <div class="hero-3d-glow" aria-hidden="true"></div>
           <div class="hero-3d-o" aria-hidden="true">
-            <img src="assets/logo.webp" alt="" style="width:100%;height:auto;mix-blend-mode:screen;border-radius:24px;" />
+            <img src="assets/logo.webp" alt="" width="480" height="480" style="width:100%;height:auto;mix-blend-mode:screen;border-radius:24px;" />
           </div>
           <div class="hero-3d-badge" aria-label="Львів, Україна">Opium Fitness · Львів</div>
         </div>
@@ -1510,14 +1607,14 @@
 <section class="section-gap" id="gallery" aria-label="Простір залу">
   <div class="container">
     <div class="label">Наш простір</div>
-    <h2 class="section-title">Зал<br/><span class="c">Opium Fitness</span></h2>
+    <h2 class="section-title">Тренажерний зал<br/><span class="c">Opium Fitness</span></h2>
     <p style="color:var(--muted);font-size:15px;max-width:520px;margin:14px 0 0;">Сучасний простір, що нещодавно розширився — більше зон, більше обладнання, більше можливостей для будь-якого напрямку.</p>
 
     <div class="gallery-masonry">
 
       <figure class="gal">
         <span class="gal-badge">Розширення 2025</span>
-        <img src="assets/gallery/hall-wide.jpg" alt="Оновлений розширений простір тренажерного залу Opium Fitness" loading="lazy" />
+        <img src="assets/gallery/hall-wide.jpg" alt="Оновлений розширений простір тренажерного залу Opium Fitness" width="1124" height="1400" loading="lazy" />
         <figcaption class="gal-cap">
           <div class="gal-cap-title">Оновлений простір</div>
           <div class="gal-cap-sub">Більше зон та обладнання після розширення</div>
@@ -1525,44 +1622,44 @@
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/racks.jpg" alt="Зона силових стійок Opium Fitness" loading="lazy" />
+        <img src="assets/gallery/racks.jpg" alt="Зона силових стійок Opium Fitness" width="1129" height="1400" loading="lazy" />
         <figcaption class="gal-cap">
           <div class="gal-cap-title">Силова зона</div>
         </figcaption>
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/branding.jpg" alt="Брендована зона OPIUM" loading="lazy" />
+        <img src="assets/gallery/branding.jpg" alt="Брендована зона OPIUM" width="1124" height="1400" loading="lazy" />
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/cardio.jpg" alt="Кардіо-зона залу" loading="lazy" />
+        <img src="assets/gallery/cardio.jpg" alt="Кардіо-зона залу" width="1124" height="1400" loading="lazy" />
         <figcaption class="gal-cap">
           <div class="gal-cap-title">Кардіо-зона</div>
         </figcaption>
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/boxing.jpg" alt="Зона боксу з боксерським мішком" loading="lazy" />
+        <img src="assets/gallery/boxing.jpg" alt="Зона боксу з боксерським мішком" width="1125" height="1400" loading="lazy" />
         <figcaption class="gal-cap">
           <div class="gal-cap-title">Зона боксу</div>
         </figcaption>
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/dumbbells.jpg" alt="Стійка зі штангами та гантелями" loading="lazy" />
+        <img src="assets/gallery/dumbbells.jpg" alt="Стійка зі штангами та гантелями" width="1112" height="1400" loading="lazy" />
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/legpress.jpg" alt="Силові тренажери залу" loading="lazy" />
+        <img src="assets/gallery/legpress.jpg" alt="Силові тренажери залу" width="1118" height="1400" loading="lazy" />
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/motivation.jpg" alt="Атмосфера тренувань в Opium Fitness" loading="lazy" />
+        <img src="assets/gallery/motivation.jpg" alt="Атмосфера тренувань в Opium Fitness" width="1174" height="1400" loading="lazy" />
       </figure>
 
       <figure class="gal">
-        <img src="assets/gallery/lightbox.jpg" alt="Брендований простір OPIUM" loading="lazy" />
+        <img src="assets/gallery/lightbox.jpg" alt="Брендований простір OPIUM" width="1135" height="1400" loading="lazy" />
       </figure>
 
     </div>
@@ -1575,7 +1672,7 @@
 <section class="section-gap" id="directions" aria-label="Напрямки тренувань">
   <div class="container">
     <div class="label">Що ми пропонуємо</div>
-    <h2 class="section-title">Напрямки<br/><span class="c">тренувань</span></h2>
+    <h2 class="section-title">Напрямки<br/><span class="c">тренувань у Львові</span></h2>
     <div class="dir-grid">
 
       <div class="dir-card">
@@ -1649,7 +1746,7 @@
       <div class="trainers-scroll" id="trainersScroll">
 
         <article class="trainer-card">
-          <img src="assets/trainers/ostap-frankiv.png" alt="Остап Франків — тренер CrossFit" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/ostap-frankiv.png" alt="Остап Франків — тренер CrossFit" width="904" height="1368" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Остап Франків</div>
             <p class="trainer-bio">Допомагаю людям ставати сильнішими, витривалішими та впевненішими в собі незалежно від рівня підготовки.</p>
@@ -1662,7 +1759,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/yulia-frankiv.png" alt="Юлія Франків — тренер CrossFit та нутриціолог" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/yulia-frankiv.png" alt="Юлія Франків — тренер CrossFit та нутриціолог" width="904" height="1318" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Юлія Франків</div>
             <p class="trainer-bio">Понад 8 років у фітнес-індустрії. CrossFit і функціональний тренінг. Практикуючий нутриціолог.</p>
@@ -1674,7 +1771,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/ostap-verhun.png" alt="Остап Вергун — тренер з боксу" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/ostap-verhun.png" alt="Остап Вергун — тренер з боксу" width="862" height="1228" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Остап Вергун</div>
             <p class="trainer-bio">15+ років спортивного досвіду. Чемпіон Львівської обл. та призер чемпіонату України з кіокушинкай карате.</p>
@@ -1687,7 +1784,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/maryana-petriv.png" alt="Мар'яна Петрів — тренер з медичною освітою" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/maryana-petriv.png" alt="Мар'яна Петрів — тренер з медичною освітою" width="882" height="1266" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Мар'яна Петрів</div>
             <p class="trainer-bio">Сертифікований тренер з медичною освітою. Понад 6 років у фітнес-індустрії.</p>
@@ -1700,7 +1797,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/olena-dorozhovets.png" alt="Олена Дорожовець — тренер бодібілдингу" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/olena-dorozhovets.png" alt="Олена Дорожовець — тренер бодібілдингу" width="852" height="1288" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Олена Дорожовець</div>
             <p class="trainer-bio">Сертифікований тренер Національної Федерації бодібілдингу України. Спортивний досвід понад 8 років.</p>
@@ -1712,7 +1809,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/yuriy-sushko.png" alt="Юрій Сушко — тренер тренажерного залу" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/yuriy-sushko.png" alt="Юрій Сушко — тренер тренажерного залу" width="916" height="1274" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Юрій Сушко</div>
             <p class="trainer-bio">Сертифікований тренер. 18 років спортивного досвіду, 7 років тренерського. Реабілітація після травм.</p>
@@ -1724,7 +1821,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/evgenia-havel.png" alt="Євгенія Гавель — фітнес-тренер" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/evgenia-havel.png" alt="Євгенія Гавель — фітнес-тренер" width="898" height="1260" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Євгенія Гавель</div>
             <p class="trainer-bio">15 років у сфері фітнесу. Глибокі знання та індивідуальний підхід. Робота з клієнтами будь-якого віку.</p>
@@ -1736,7 +1833,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/khrystyna-hrabar.png" alt="Христина Грабар — персональний тренер" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/khrystyna-hrabar.png" alt="Христина Грабар — персональний тренер" width="954" height="1356" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Христина Грабар</div>
             <p class="trainer-bio">Сертифікований персональний тренер. Спортивний досвід понад 5 років. Набір маси та схуднення.</p>
@@ -1748,7 +1845,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/diana-sinchilova.png" alt="Діана Сінчілова — тренер фітнесу та стретчингу" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/diana-sinchilova.png" alt="Діана Сінчілова — тренер фітнесу та стретчингу" width="902" height="1388" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Діана Сінчілова</div>
             <p class="trainer-bio">Дипломований тренер з вищою освітою. 10+ років тренерського досвіду. У спорті понад 23 роки.</p>
@@ -1761,7 +1858,7 @@
         </article>
 
         <article class="trainer-card">
-          <img src="assets/trainers/maria-dolgova.png" alt="Марія Долгова — тренер стретчингу та Barre" class="trainer-photo" loading="lazy" />
+          <img src="assets/trainers/maria-dolgova.png" alt="Марія Долгова — тренер стретчингу та Barre" width="866" height="1280" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Марія Долгова</div>
             <p class="trainer-bio">КМС з фігурного катання. 13 років фігурного катання і 6 років балету. Пластика і гнучкість.</p>
@@ -2270,6 +2367,69 @@
   </div>
 </section>
 
+<div class="neon-divider" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════ FAQ -->
+<section class="faq-section" id="faq" aria-label="Часті запитання про Opium Fitness">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="label" style="justify-content:center;">Поширені запитання</div>
+      <h2 class="section-title">Часті<br/><span class="c">запитання</span></h2>
+    </div>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Скільки коштує абонемент у Opium Fitness?
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="faq-a">Разове відвідування тренажерного залу — від 390 грн. Місячний абонемент — від 2290 грн, є вигідні пакети на 3, 6 і 12 місяців та персональні тренування. Для військовослужбовців діє знижка 25%. Актуальні ціни — у <a href="#prices">розділі «Ціни»</a> та в застосунку Opium Fitness.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Чи можна спробувати тренування перед покупкою абонемента?
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="faq-a">Так. Перше заняття з тренером у Opium Fitness — безкоштовне, без передоплати та зобов'язань. <a href="#contact">Залиш заявку</a> на сайті — і ми підберемо зручний час.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Які напрямки тренувань є в залі Opium Fitness?
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="faq-a">У нас тренажерний зал для самостійних тренувань, CrossFit, бокс, Muay Thai, самооборона, стретчинг і Barre, а також персональні тренування з тренером. Понад 10 тренерів допоможуть із будь-якою ціллю — від схуднення до підготовки до змагань.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Який графік роботи Opium Fitness у Львові?
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="faq-a">Понеділок — субота: 07:00–22:30. Неділя: 09:00–21:00. Розклад групових занять — у застосунку або в Instagram.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Де знаходиться зал Opium Fitness?
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="faq-a">Opium Fitness розташований у Львові. Точну адресу, маршрут і паркування дивись у <a href="#contact">блоці контактів</a> унизу сторінки або напиши нам в Instagram — підкажемо, як зручно дістатися.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Чи є у Opium Fitness власний застосунок?
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="faq-a">Так. Через застосунок Opium Fitness можна бронювати заняття, відстежувати прогрес, бачити розклад і оплачувати абонементи. Він доступний для iPhone в <a href="http://apps.apple.com/ar/app/opium/id6714474721" target="_blank" rel="noopener">App Store</a> та для Android у <a href="https://play.google.com/store/apps/details?id=com.softlab.opium" target="_blank" rel="noopener">Google Play</a>.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════════════════════════════ FOOTER -->
 <footer class="footer" role="contentinfo">
   <div class="container">
@@ -2284,6 +2444,7 @@
         <a href="#trainers">Тренери</a>
         <a href="#prices">Ціни</a>
         <a href="#schedule">Розклад</a>
+        <a href="#faq">Питання</a>
         <a href="vacancies.html">Вакансії</a>
         <a href="#contact">Контакти</a>
         <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener">Instagram</a>
