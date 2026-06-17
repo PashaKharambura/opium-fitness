@@ -682,6 +682,67 @@
     .form-submit:hover { background: #74e8e0; box-shadow: 0 0 40px rgba(92,224,216,.45); }
     .form-submit:disabled { opacity: .6; cursor: not-allowed; }
     .form-note { font-size: 11px; color: var(--muted); margin-top: 10px; text-align: center; }
+
+    /* ── DATE / TIME PICKER ──────────────────────────────── */
+    .dt-field { position: relative; }
+    .dt-trigger {
+      width: 100%; display: flex; align-items: center; gap: 10px;
+      background: var(--bg-card2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 13px 14px; cursor: pointer;
+      color: var(--text); font-family: 'Barlow', sans-serif; font-size: 14px; text-align: left;
+      transition: border-color .2s;
+    }
+    .dt-trigger:hover, .dt-trigger.active { border-color: var(--cyan); }
+    .dt-cal-ic { width: 18px; height: 18px; color: var(--cyan); flex-shrink: 0; }
+    .dt-chev { width: 16px; height: 16px; color: var(--muted); margin-left: auto; transition: transform .2s; }
+    .dt-trigger.active .dt-chev { transform: rotate(180deg); }
+    .dt-placeholder { color: var(--muted); }
+    .dt-trigger.has-val .dt-placeholder { color: var(--text); }
+    .dt-pop {
+      position: absolute; z-index: 40; left: 0; right: 0; margin-top: 8px;
+      background: #0E0E0E; border: 1px solid rgba(92,224,216,.25); border-radius: 14px; padding: 16px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.6), 0 0 30px rgba(92,224,216,.08);
+    }
+    .dt-pop[hidden] { display: none; }
+    .dt-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .dt-month { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 17px; text-transform: uppercase; letter-spacing: .03em; }
+    .dt-nav {
+      width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--text); cursor: pointer; font-size: 18px; line-height: 1;
+      display: flex; align-items: center; justify-content: center; transition: border-color .2s, color .2s;
+    }
+    .dt-nav:hover:not(:disabled) { border-color: var(--cyan); color: var(--cyan); }
+    .dt-nav:disabled { opacity: .3; cursor: not-allowed; }
+    .dt-weekdays { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-bottom: 6px; }
+    .dt-weekdays span { text-align: center; font-size: 11px; color: var(--muted); font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .05em; }
+    .dt-days { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
+    .dt-day {
+      aspect-ratio: 1; border: 0; background: transparent; color: var(--text); border-radius: 8px;
+      cursor: pointer; font-size: 13px; font-family: 'Barlow', sans-serif; transition: background .15s, color .15s;
+    }
+    .dt-day:hover:not(:disabled):not(.sel) { background: rgba(92,224,216,.12); }
+    .dt-day.sel { background: var(--cyan); color: #06201E; font-weight: 700; }
+    .dt-day.empty { visibility: hidden; cursor: default; }
+    .dt-day:disabled { color: rgba(107,114,128,.3); cursor: not-allowed; }
+    .dt-day.today:not(.sel) { box-shadow: inset 0 0 0 1px rgba(92,224,216,.4); }
+    .dt-times { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .dt-times[hidden] { display: none; }
+    .dt-times-head { font-size: 12px; color: var(--muted); margin-bottom: 9px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .05em; }
+    .dt-times-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; max-height: 152px; overflow-y: auto; }
+    .dt-time {
+      padding: 8px 0; text-align: center; border: 1px solid var(--border); background: var(--bg-card);
+      border-radius: 8px; color: var(--text); font-size: 13px; cursor: pointer; transition: border-color .15s, background .15s, color .15s;
+    }
+    .dt-time:hover:not(.sel) { border-color: var(--cyan); color: var(--cyan); }
+    .dt-time.sel { background: var(--cyan); color: #06201E; border-color: var(--cyan); font-weight: 700; }
+    .dt-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; gap: 10px; }
+    .dt-clear { background: transparent; border: 0; color: var(--muted); font-size: 13px; cursor: pointer; padding: 8px 4px; }
+    .dt-clear:hover { color: var(--pink); }
+    .dt-done {
+      background: var(--cyan); color: #06201E; border: 0; border-radius: 8px; padding: 9px 22px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 13px; cursor: pointer;
+    }
+
     .success-msg {
       display: none; text-align: center; padding: 20px;
       background: rgba(92,224,216,.07);
@@ -2256,6 +2317,32 @@
                 <option>Ще не вирішив/ла</option>
               </select>
             </div>
+            <div class="form-group dt-field">
+              <label for="dtTrigger">Бажаний час</label>
+              <button type="button" class="dt-trigger" id="dtTrigger" aria-haspopup="dialog" aria-expanded="false">
+                <svg class="dt-cal-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <span class="dt-placeholder" id="dtLabel">Обери дату й годину</span>
+                <svg class="dt-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <input type="hidden" id="preferredTime" name="preferredTime" value="" />
+              <div class="dt-pop" id="dtPop" role="dialog" aria-label="Вибір дати й часу" hidden>
+                <div class="dt-cal-head">
+                  <button type="button" class="dt-nav" id="dtPrev" aria-label="Попередній місяць">‹</button>
+                  <div class="dt-month" id="dtMonth"></div>
+                  <button type="button" class="dt-nav" id="dtNext" aria-label="Наступний місяць">›</button>
+                </div>
+                <div class="dt-weekdays"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Нд</span></div>
+                <div class="dt-days" id="dtDays"></div>
+                <div class="dt-times" id="dtTimes" hidden>
+                  <div class="dt-times-head" id="dtTimesHead">Час</div>
+                  <div class="dt-times-grid" id="dtTimesGrid"></div>
+                </div>
+                <div class="dt-actions">
+                  <button type="button" class="dt-clear" id="dtClear">Скинути</button>
+                  <button type="button" class="dt-done" id="dtDone">Готово</button>
+                </div>
+              </div>
+            </div>
             <div class="form-group">
               <label for="message">Коментар</label>
               <textarea id="message" name="message" placeholder="Ціль, питання, побажання..."></textarea>
@@ -2773,6 +2860,7 @@
       type: 'lead',
       name, phone,
       direction: document.getElementById('direction').value || '',
+      preferredTime: (document.getElementById('preferredTime') || {}).value || '',
       message: document.getElementById('message').value.trim(),
       source: document.referrer || 'direct',
       page: location.href,
@@ -2790,6 +2878,7 @@
       }
       trackLead(payload);
       e.target.reset();
+      if (window.__dtReset) window.__dtReset();
       document.getElementById('successMsg').classList.add('show');
       openAppModal();
     } catch (err) {
@@ -2933,6 +3022,108 @@
         btn.textContent = 'Забрати годину в подарунок'; btn.disabled = false;
       }
     });
+  })();
+</script>
+
+<!-- Пікер дати й часу для форми запису -->
+<script>
+  (function () {
+    var trigger = document.getElementById('dtTrigger');
+    var pop = document.getElementById('dtPop');
+    var label = document.getElementById('dtLabel');
+    var hidden = document.getElementById('preferredTime');
+    var monthEl = document.getElementById('dtMonth');
+    var daysEl = document.getElementById('dtDays');
+    var prevBtn = document.getElementById('dtPrev');
+    var nextBtn = document.getElementById('dtNext');
+    var timesWrap = document.getElementById('dtTimes');
+    var timesHead = document.getElementById('dtTimesHead');
+    var timesGrid = document.getElementById('dtTimesGrid');
+    var clearBtn = document.getElementById('dtClear');
+    var doneBtn = document.getElementById('dtDone');
+    if (!trigger || !pop) return;
+
+    var MONTHS = ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'];
+    var MONTHS_GEN = ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
+    var WDAYS = ['неділя','понеділок','вівторок','середа','четвер','пʼятниця','субота'];
+
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var maxDate = new Date(today); maxDate.setMonth(maxDate.getMonth() + 3);
+    var view = new Date(today.getFullYear(), today.getMonth(), 1);
+    var selDate = null, selTime = null;
+
+    function sameDay(a, b) { return a && b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+    function workingHours(weekday) { return weekday === 0 ? { from: 9, to: 21 } : { from: 7, to: 22 }; }
+
+    function renderCal() {
+      monthEl.textContent = MONTHS[view.getMonth()] + ' ' + view.getFullYear();
+      prevBtn.disabled = (view.getFullYear() === today.getFullYear() && view.getMonth() === today.getMonth());
+      nextBtn.disabled = (view.getFullYear() === maxDate.getFullYear() && view.getMonth() === maxDate.getMonth());
+      daysEl.innerHTML = '';
+      var first = new Date(view.getFullYear(), view.getMonth(), 1);
+      var offset = (first.getDay() + 6) % 7;
+      var dim = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      for (var i = 0; i < offset; i++) { var e = document.createElement('div'); e.className = 'dt-day empty'; daysEl.appendChild(e); }
+      for (var d = 1; d <= dim; d++) {
+        var date = new Date(view.getFullYear(), view.getMonth(), d);
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'dt-day'; b.textContent = d;
+        if (date < today || date > maxDate) b.disabled = true;
+        if (sameDay(date, today)) b.classList.add('today');
+        if (sameDay(date, selDate)) b.classList.add('sel');
+        (function (dt) { b.addEventListener('click', function () { pickDate(dt); }); })(date);
+        daysEl.appendChild(b);
+      }
+    }
+
+    function renderTimes() {
+      if (!selDate) { timesWrap.hidden = true; return; }
+      timesWrap.hidden = false;
+      var wh = workingHours(selDate.getDay());
+      timesHead.textContent = 'Час (' + ('0' + wh.from).slice(-2) + ':00 – ' + wh.to + ':00)';
+      timesGrid.innerHTML = '';
+      for (var h = wh.from; h <= wh.to; h++) {
+        var hh = ('0' + h).slice(-2) + ':00';
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'dt-time'; b.textContent = hh;
+        if (hh === selTime) b.classList.add('sel');
+        (function (t) { b.addEventListener('click', function () { selTime = t; renderTimes(); commit(); }); })(hh);
+        timesGrid.appendChild(b);
+      }
+    }
+
+    function pickDate(dt) {
+      selDate = dt;
+      if (selTime) { var wh = workingHours(dt.getDay()); var h = parseInt(selTime, 10); if (h < wh.from || h > wh.to) selTime = null; }
+      renderCal(); renderTimes(); commit();
+    }
+
+    function fmt() {
+      if (!selDate) return '';
+      var s = WDAYS[selDate.getDay()] + ', ' + selDate.getDate() + ' ' + MONTHS_GEN[selDate.getMonth()];
+      if (selTime) s += ', ' + selTime;
+      return s;
+    }
+
+    function commit() {
+      var v = fmt();
+      hidden.value = v;
+      if (v) { label.textContent = v; trigger.classList.add('has-val'); }
+      else { label.textContent = 'Обери дату й годину'; trigger.classList.remove('has-val'); }
+    }
+
+    function open() { pop.hidden = false; trigger.classList.add('active'); trigger.setAttribute('aria-expanded', 'true'); renderCal(); renderTimes(); }
+    function close() { pop.hidden = true; trigger.classList.remove('active'); trigger.setAttribute('aria-expanded', 'false'); }
+
+    trigger.addEventListener('click', function () { pop.hidden ? open() : close(); });
+    prevBtn.addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); });
+    nextBtn.addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); });
+    doneBtn.addEventListener('click', close);
+    clearBtn.addEventListener('click', function () { selDate = null; selTime = null; commit(); renderCal(); renderTimes(); });
+    document.addEventListener('click', function (e) { if (!pop.hidden && !pop.contains(e.target) && !trigger.contains(e.target)) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) close(); });
+
+    window.__dtReset = function () { selDate = null; selTime = null; view = new Date(today.getFullYear(), today.getMonth(), 1); commit(); close(); };
   })();
 </script>
 
