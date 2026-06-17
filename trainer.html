@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Тренер Opium Fitness — тренажерного залу та фітнес-клубу у Львові." />
+  <title>Тренер — Opium Fitness Львів</title>
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <link rel="canonical" href="https://pashakharambura.github.io/opium-fitness/trainer.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/og-logo.png" />
+  <link rel="icon" type="image/webp" href="assets/logo.webp" />
+  <link rel="apple-touch-icon" href="assets/og-logo.png" />
+
+  <!-- Open Graph (refined per-trainer by JS) -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Opium Fitness" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:title" content="Тренер — Opium Fitness Львів" />
+  <meta property="og:description" content="Тренер тренажерного залу та фітнес-клубу Opium Fitness у Львові." />
+  <meta property="og:image" content="https://pashakharambura.github.io/opium-fitness/assets/og-logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0A0A0A; --bg-card: #111111; --bg-card2: #161616;
+      --cyan: #5CE0D8; --cyan-d: #3ECFC7; --pink: #FF2070;
+      --text: #F0F2F5; --muted: #6B7280;
+      --border: rgba(92,224,216,.12);
+      --glow-c: 0 0 28px rgba(92,224,216,.3);
+      --nav-h: 68px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Barlow', sans-serif; font-size: 16px; line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 50; height: var(--nav-h);
+      display: flex; align-items: center;
+      background: rgba(10,10,10,.82); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 22px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .nav-logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .nav-logo-mark { width: 34px; height: 34px; border-radius: 7px; }
+    .nav-logo-word {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900;
+      letter-spacing: .04em; color: var(--text);
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--cyan); }
+    .nav-back svg { width: 16px; height: 16px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .04em;
+      border-radius: 10px; padding: 12px 22px; font-size: 15px;
+      border: 1px solid transparent; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn-primary { background: var(--cyan); color: #06201E; box-shadow: var(--glow-c); }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-outline { background: transparent; border-color: var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+    .nav .btn { padding: 9px 16px; font-size: 13px; }
+
+    /* ── BREADCRUMB ── */
+    .crumbs {
+      padding: 22px 0 4px; font-size: 12.5px; color: var(--muted);
+      display: flex; gap: 7px; flex-wrap: wrap;
+    }
+    .crumbs a:hover { color: var(--cyan); }
+    .crumbs span[aria-current] { color: var(--text); }
+
+    /* ── HERO ── */
+    .t-hero { display: grid; grid-template-columns: minmax(0, 360px) 1fr; gap: 40px;
+      align-items: start; padding: 18px 0 40px; }
+    .t-photo-wrap {
+      position: relative; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--bg-card);
+      box-shadow: var(--glow-c);
+    }
+    .t-photo { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top center; }
+    .t-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .14em; color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .t-label::before { content: ''; width: 22px; height: 2px; background: var(--cyan); display: inline-block; }
+    .t-name {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; line-height: .98;
+      font-size: clamp(38px, 6vw, 64px); text-transform: uppercase; letter-spacing: -.01em;
+      margin-bottom: 16px;
+    }
+    .t-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px; }
+    .t-tag {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      background: rgba(92,224,216,.08); border: 1px solid rgba(92,224,216,.18);
+      color: var(--cyan); padding: 5px 12px; border-radius: 7px;
+    }
+    .t-bio { font-size: 16px; color: #C9CDD3; line-height: 1.75; margin-bottom: 18px; max-width: 560px; }
+    .t-context { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; max-width: 560px; }
+    .t-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* ── DIRECTIONS ── */
+    .t-section { padding: 12px 0 8px; }
+    .t-section-h {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .01em; margin-bottom: 20px;
+    }
+    .t-section-h .c { color: var(--cyan); }
+    .t-dirs { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+    .t-dir {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 18px 20px;
+    }
+    .t-dir-name {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .02em; color: var(--cyan); margin-bottom: 7px;
+    }
+    .t-dir-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA STRIP ── */
+    .t-cta {
+      margin: 44px 0; padding: 36px 26px; text-align: center;
+      background: linear-gradient(135deg, rgba(92,224,216,.07), rgba(255,32,112,.06));
+      border: 1px solid var(--border); border-radius: 20px;
+    }
+    .t-cta h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-size: clamp(24px, 4vw, 34px);
+      font-weight: 900; text-transform: uppercase; line-height: 1.05; margin-bottom: 8px;
+    }
+    .t-cta p { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+    .t-cta .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+    /* ── OTHER TRAINERS ── */
+    .t-others { padding: 8px 0 60px; }
+    .t-others-track { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+    .t-others-track::-webkit-scrollbar { height: 6px; }
+    .t-others-track::-webkit-scrollbar-thumb { background: rgba(92,224,216,.25); border-radius: 4px; }
+    .t-mini {
+      flex: 0 0 168px; scroll-snap-align: start;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden; transition: transform .2s, border-color .2s;
+    }
+    .t-mini:hover { transform: translateY(-4px); border-color: rgba(92,224,216,.3); }
+    .t-mini img { width: 100%; height: 168px; object-fit: cover; object-position: top center; }
+    .t-mini-name {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .02em; padding: 12px 12px 4px;
+    }
+    .t-mini-role { font-size: 11.5px; color: var(--muted); padding: 0 12px 14px; }
+
+    /* ── FOOTER ── */
+    .footer { border-top: 1px solid var(--border); padding: 34px 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .footer-logo-word { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; letter-spacing: .04em; }
+    .footer-copy { font-size: 12.5px; color: var(--muted); }
+
+    /* ── FLOAT SOCIAL ── */
+    .float-social { position: fixed; right: 20px; bottom: 20px; z-index: 60;
+      display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+    .float-chat { width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4); transition: transform .2s; }
+    .float-chat:hover { transform: scale(1.07); }
+    .float-chat svg { width: 26px; height: 26px; color: #fff; }
+    .float-chat.tg { background: #229ED9; }
+    .float-chat.ig { background: linear-gradient(45deg, #f09433, #dc2743 50%, #bc1888); }
+
+    /* ── NOT FOUND ── */
+    .t-404 { text-align: center; padding: 90px 0; }
+    .t-404 h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 900;
+      text-transform: uppercase; margin-bottom: 12px; }
+    .t-404 p { color: var(--muted); margin-bottom: 24px; }
+
+    @media (max-width: 800px) {
+      .t-hero { grid-template-columns: 1fr; gap: 22px; }
+      .t-photo-wrap { max-width: 340px; }
+      .nav-back { display: none; }
+    }
+    @media (max-width: 560px) {
+      .float-social { right: 14px; bottom: 14px; gap: 10px; }
+      .float-chat { width: 48px; height: 48px; }
+      .nav-logo-word { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Головна навігація">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo-wrap" aria-label="Opium Fitness — на головну">
+      <img class="nav-logo-mark" src="assets/logo.webp" alt="Opium Fitness" width="34" height="34" />
+      <span class="nav-logo-word">OPIUM</span>
+    </a>
+    <a href="index.html#trainers" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      Усі тренери
+    </a>
+    <a href="index.html#contact" class="btn btn-primary">Записатись</a>
+  </div>
+</nav>
+
+<main id="t-root">
+  <!-- Заповнюється JS на основі ?slug= -->
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo-wrap">
+        <img src="assets/logo.webp" alt="Opium Fitness" width="28" height="28" style="border-radius:6px;" />
+        <span class="footer-logo-word">OPIUM FITNESS</span>
+      </a>
+      <div class="footer-copy">© 2025 Opium Fitness. Львів, Україна.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-social">
+  <a href="https://t.me/+380930033636" target="_blank" rel="noopener" class="float-chat tg" aria-label="Написати в Telegram">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.46 18.9 19.2c-.23 1.02-.84 1.27-1.7.79l-4.7-3.46-2.27 2.18c-.25.25-.46.46-.94.46l.33-4.78L18.6 6.1c.38-.34-.08-.53-.6-.19L6.9 13.05l-4.7-1.47c-1.02-.32-1.04-1.02.21-1.51l18.36-7.08c.85-.31 1.6.2 1.32 1.47z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="float-chat ig" aria-label="Ми в Instagram">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.64-.07-4.85 0-3.2.01-3.58.07-4.85C2.38 3.93 3.9 2.39 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zm0 3.68A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.84a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+  </a>
+</div>
+
+<script>
+  /* ── Дані тренерів (єдине джерело) ───────────────────────── */
+  var TRAINERS = [
+    { slug: "ostap-frankiv", name: "Остап Франків", role: "CrossFit", dir: "CrossFit",
+      photo: "assets/trainers/ostap-frankiv.png", w: 904, h: 1368,
+      tags: ["CrossFit", "Силова", "Кондиція"],
+      bio: "Допомагаю людям ставати сильнішими, витривалішими та впевненішими в собі незалежно від рівня підготовки." },
+    { slug: "yulia-frankiv", name: "Юлія Франків", role: "CrossFit та нутриціолог", dir: "CrossFit",
+      photo: "assets/trainers/yulia-frankiv.png", w: 904, h: 1318,
+      tags: ["CrossFit", "Нутриціолог"],
+      bio: "Понад 8 років у фітнес-індустрії. CrossFit і функціональний тренінг. Практикуючий нутриціолог." },
+    { slug: "ostap-verhun", name: "Остап Вергун", role: "бокс", dir: "Бокс",
+      photo: "assets/trainers/ostap-verhun.png", w: 862, h: 1228,
+      tags: ["Бокс", "Карате", "Нутриціологія"],
+      bio: "15+ років спортивного досвіду. Чемпіон Львівської обл. та призер чемпіонату України з кіокушинкай карате." },
+    { slug: "maryana-petriv", name: "Мар'яна Петрів", role: "функціональний тренінг", dir: "Персональні тренування",
+      photo: "assets/trainers/maryana-petriv.png", w: 882, h: 1266,
+      tags: ["Функціональний", "TRX", "Силові"],
+      bio: "Сертифікований тренер з медичною освітою. Понад 6 років у фітнес-індустрії." },
+    { slug: "olena-dorozhovets", name: "Олена Дорожовець", role: "бодібілдинг", dir: "Персональні тренування",
+      photo: "assets/trainers/olena-dorozhovets.png", w: 852, h: 1288,
+      tags: ["Силовий", "Корекція фігури"],
+      bio: "Сертифікований тренер Національної Федерації бодібілдингу України. Спортивний досвід понад 8 років." },
+    { slug: "yuriy-sushko", name: "Юрій Сушко", role: "тренажерний зал", dir: "Персональні тренування",
+      photo: "assets/trainers/yuriy-sushko.png", w: 916, h: 1274,
+      tags: ["Тренажерний зал", "Реабілітація"],
+      bio: "Сертифікований тренер. 18 років спортивного досвіду, 7 років тренерського. Реабілітація після травм." },
+    { slug: "evgenia-havel", name: "Євгенія Гавель", role: "фітнес", dir: "Персональні тренування",
+      photo: "assets/trainers/evgenia-havel.png", w: 898, h: 1260,
+      tags: ["Силові", "Харчування"],
+      bio: "15 років у сфері фітнесу. Глибокі знання та індивідуальний підхід. Робота з клієнтами будь-якого віку." },
+    { slug: "khrystyna-hrabar", name: "Христина Грабар", role: "персональні тренування", dir: "Персональні тренування",
+      photo: "assets/trainers/khrystyna-hrabar.png", w: 954, h: 1356,
+      tags: ["М'язова маса", "Схуднення"],
+      bio: "Сертифікований персональний тренер. Спортивний досвід понад 5 років. Набір маси та схуднення." },
+    { slug: "diana-sinchilova", name: "Діана Сінчілова", role: "стретчинг", dir: "Стретчинг / Barre",
+      photo: "assets/trainers/diana-sinchilova.png", w: 902, h: 1388,
+      tags: ["Фітнес", "Стретчинг", "Barre"],
+      bio: "Дипломований тренер з вищою освітою. 10+ років тренерського досвіду. У спорті понад 23 роки." },
+    { slug: "maria-dolgova", name: "Марія Долгова", role: "стретчинг та Barre", dir: "Стретчинг / Barre",
+      photo: "assets/trainers/maria-dolgova.png", w: 866, h: 1280,
+      tags: ["Стретчинг", "Barre", "Корекція фігури"],
+      bio: "КМС з фігурного катання. 13 років фігурного катання і 6 років балету. Пластика і гнучкість." }
+  ];
+
+  /* ── Опис напрямів ─────────────────────────────────────── */
+  var DIR_DESC = {
+    "CrossFit": "Функціональний тренінг високої інтенсивності: сила, витривалість і кардіо в одному.",
+    "Силова": "Робота з вагою для росту сили та м'язів за безпечною технікою.",
+    "Силові": "Робота з вагою для росту сили та м'язів за безпечною технікою.",
+    "Силовий": "Силові тренування під контролем тренера — сила і рельєф.",
+    "Кондиція": "Загальна фізична підготовка: витривалість, рухливість, енергія.",
+    "Нутриціолог": "Супровід із харчування під твою ціль — без жорстких дієт.",
+    "Нутриціологія": "Супровід із харчування під твою ціль — без жорстких дієт.",
+    "Харчування": "Підбір харчування під ціль і спосіб життя.",
+    "Функціональний": "Природні рухи тіла для сили, балансу й щоденної форми.",
+    "TRX": "Тренування з петлями на власній вазі — кор, баланс, тонус.",
+    "Бокс": "Техніка ударів, робота ніг і реакція — від нуля до впевненого рівня.",
+    "Карате": "Бойове мистецтво: дисципліна, техніка та самоконтроль.",
+    "Тренажерний зал": "Персональна програма в залі під твій рівень і ціль.",
+    "Реабілітація": "Відновлення після травм і безпечне повернення до тренувань.",
+    "М'язова маса": "Програма на набір якісної м'язової маси.",
+    "Схуднення": "Зниження ваги через тренування й системний підхід.",
+    "Фітнес": "Загальна форма, тонус і гарне самопочуття.",
+    "Стретчинг": "Розтяжка й гнучкість — від базового рівня до шпагату.",
+    "Barre": "Поєднання балету, пілатесу й фітнесу для стрункості та постави.",
+    "Корекція фігури": "Цілеспрямована робота над формою тіла та пропорціями."
+  };
+
+  var BASE = "https://pashakharambura.github.io/opium-fitness/";
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function getSlug() {
+    return new URLSearchParams(location.search).get("slug") || "";
+  }
+
+  function setMeta(t) {
+    var title = t.name + " — тренер " + t.role + " | Opium Fitness Львів";
+    var desc = t.bio + " Тренує в Opium Fitness — тренажерному залі та фітнес-клубі у Львові.";
+    var img = BASE + t.photo;
+    var url = BASE + "trainer.html?slug=" + t.slug;
+    document.title = title;
+    function set(sel, attr, val) {
+      var el = document.querySelector(sel);
+      if (el) el.setAttribute(attr, val);
+    }
+    set('meta[name="description"]', "content", desc);
+    set('link[rel="canonical"]', "href", url);
+    set('meta[property="og:title"]', "content", title);
+    set('meta[property="og:description"]', "content", desc);
+    set('meta[property="og:image"]', "content", img);
+    // og:url (додаємо, якщо немає)
+    var ogu = document.querySelector('meta[property="og:url"]');
+    if (!ogu) { ogu = document.createElement("meta"); ogu.setAttribute("property", "og:url"); document.head.appendChild(ogu); }
+    ogu.setAttribute("content", url);
+  }
+
+  function injectSchema(t) {
+    var url = BASE + "trainer.html?slug=" + t.slug;
+    var data = {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": t.name,
+        "jobTitle": "Тренер — " + t.role,
+        "image": BASE + t.photo,
+        "url": url,
+        "knowsAbout": t.tags,
+        "worksFor": {
+          "@type": ["HealthClub", "ExerciseGym"],
+          "name": "Opium Fitness",
+          "url": BASE,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "вул. Шевченка, 31А",
+            "addressLocality": "Львів",
+            "addressCountry": "UA"
+          }
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Головна", "item": BASE },
+          { "@type": "ListItem", "position": 2, "name": "Тренери", "item": BASE + "index.html#trainers" },
+          { "@type": "ListItem", "position": 3, "name": t.name, "item": url }
+        ]
+      }
+    };
+    var s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(data);
+    document.head.appendChild(s);
+  }
+
+  function tagsHtml(tags) {
+    return tags.map(function (x) { return '<span class="t-tag">' + esc(x) + "</span>"; }).join("");
+  }
+
+  function dirsHtml(tags) {
+    return tags.map(function (x) {
+      var d = DIR_DESC[x] || "Тренування під твою ціль із тренером Opium Fitness.";
+      return '<div class="t-dir"><div class="t-dir-name">' + esc(x) + '</div><div class="t-dir-desc">' + esc(d) + "</div></div>";
+    }).join("");
+  }
+
+  function othersHtml(slug) {
+    var others = TRAINERS.filter(function (x) { return x.slug !== slug; }).slice(0, 8);
+    return others.map(function (x) {
+      return '<a class="t-mini" href="trainer.html?slug=' + x.slug + '" aria-label="Тренер ' + esc(x.name) + '">' +
+        '<img src="' + x.photo + '" alt="' + esc(x.name) + ' — тренер Opium Fitness" width="' + x.w + '" height="' + x.h + '" loading="lazy" />' +
+        '<div class="t-mini-name">' + esc(x.name) + '</div>' +
+        '<div class="t-mini-role">' + esc(x.role) + "</div></a>";
+    }).join("");
+  }
+
+  function render() {
+    var slug = getSlug();
+    var t = TRAINERS.filter(function (x) { return x.slug === slug; })[0];
+    var root = document.getElementById("t-root");
+
+    if (!t) {
+      root.innerHTML =
+        '<div class="container"><div class="t-404">' +
+        "<h1>Тренера не знайдено</h1>" +
+        "<p>Можливо, посилання застаріло. Подивись усю команду Opium Fitness.</p>" +
+        '<a href="index.html#trainers" class="btn btn-primary">До всіх тренерів</a>' +
+        "</div></div>";
+      return;
+    }
+
+    setMeta(t);
+    injectSchema(t);
+
+    var bookHref = "index.html?coach=" + encodeURIComponent(t.name) + "&dir=" + encodeURIComponent(t.dir) + "#contact";
+
+    root.innerHTML =
+      '<div class="container">' +
+        '<nav class="crumbs" aria-label="Хлібні крихти">' +
+          '<a href="index.html">Головна</a><span aria-hidden="true">/</span>' +
+          '<a href="index.html#trainers">Тренери</a><span aria-hidden="true">/</span>' +
+          '<span aria-current="page">' + esc(t.name) + "</span>" +
+        "</nav>" +
+
+        '<section class="t-hero">' +
+          '<div class="t-photo-wrap">' +
+            '<img class="t-photo" src="' + t.photo + '" alt="' + esc(t.name) + " — тренер " + esc(t.role) + ' в Opium Fitness, Львів" width="' + t.w + '" height="' + t.h + '" />' +
+          "</div>" +
+          "<div>" +
+            '<div class="t-label">Тренер Opium Fitness</div>' +
+            '<h1 class="t-name">' + esc(t.name) + "</h1>" +
+            '<div class="t-tags">' + tagsHtml(t.tags) + "</div>" +
+            '<p class="t-bio">' + esc(t.bio) + "</p>" +
+            '<p class="t-context">Проводить тренування в Opium Fitness — тренажерному залі та фітнес-клубі у Львові (вул. Шевченка, 31А). Перше заняття — безкоштовне, без передоплати.</p>' +
+            '<div class="t-actions">' +
+              '<a href="' + bookHref + '" class="btn btn-primary">Записатись на тренування</a>' +
+              '<a href="index.html#trainers" class="btn btn-outline">← Усі тренери</a>' +
+            "</div>" +
+          "</div>" +
+        "</section>" +
+
+        '<section class="t-section" aria-label="Напрями тренувань">' +
+          '<h2 class="t-section-h">Напрями <span class="c">тренувань</span></h2>' +
+          '<div class="t-dirs">' + dirsHtml(t.tags) + "</div>" +
+        "</section>" +
+
+        '<section class="t-cta">' +
+          "<h3>Записатись до тренера " + esc(t.name) + "</h3>" +
+          "<p>Залиш заявку — менеджер підбере зручний час. Перше заняття безкоштовне.</p>" +
+          '<div class="actions">' +
+            '<a href="' + bookHref + '" class="btn btn-primary">Залишити заявку</a>' +
+            '<a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-outline">Написати в Instagram</a>' +
+          "</div>" +
+        "</section>" +
+
+        '<section class="t-others" aria-label="Інші тренери">' +
+          '<h2 class="t-section-h">Інші <span class="c">тренери</span></h2>' +
+          '<div class="t-others-track">' + othersHtml(t.slug) + "</div>" +
+        "</section>" +
+      "</div>";
+  }
+
+  render();
+  window.addEventListener("popstate", render);
+</script>
+</body>
+</html>

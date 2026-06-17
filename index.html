@@ -447,6 +447,7 @@
 
     .trainer-card {
       flex: 0 0 260px; scroll-snap-align: start;
+      display: block; text-decoration: none; color: inherit;
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: 16px; overflow: hidden;
       transition: transform 200ms ease, border-color 200ms;
@@ -474,6 +475,14 @@
       border: 1px solid rgba(92,224,216,.15);
       color: var(--cyan); padding: 3px 9px; border-radius: 6px;
     }
+    .trainer-more {
+      display: inline-flex; align-items: center; gap: 5px; margin-top: 13px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--cyan); opacity: .85; transition: gap .2s ease, opacity .2s ease;
+    }
+    .trainer-more svg { width: 14px; height: 14px; }
+    .trainer-card:hover .trainer-more { gap: 9px; opacity: 1; }
 
     /* Scroll arrows */
     .scroll-btn {
@@ -1761,7 +1770,7 @@
 
       <div class="trainers-scroll" id="trainersScroll">
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=ostap-frankiv" aria-label="Детальніше про тренера Остап Франків">
           <img src="assets/trainers/ostap-frankiv.png" alt="Остап Франків — тренер CrossFit" width="904" height="1368" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Остап Франків</div>
@@ -1771,10 +1780,11 @@
               <span class="trainer-tag">Силова</span>
               <span class="trainer-tag">Кондиція</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=yulia-frankiv" aria-label="Детальніше про тренера Юлія Франків">
           <img src="assets/trainers/yulia-frankiv.png" alt="Юлія Франків — тренер CrossFit та нутриціолог" width="904" height="1318" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Юлія Франків</div>
@@ -1783,10 +1793,11 @@
               <span class="trainer-tag">CrossFit</span>
               <span class="trainer-tag">Нутриціолог</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=ostap-verhun" aria-label="Детальніше про тренера Остап Вергун">
           <img src="assets/trainers/ostap-verhun.png" alt="Остап Вергун — тренер з боксу" width="862" height="1228" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Остап Вергун</div>
@@ -1796,10 +1807,11 @@
               <span class="trainer-tag">Карате</span>
               <span class="trainer-tag">Нутриціологія</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=maryana-petriv" aria-label="Детальніше про тренера Мар'яна Петрів">
           <img src="assets/trainers/maryana-petriv.png" alt="Мар'яна Петрів — тренер з медичною освітою" width="882" height="1266" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Мар'яна Петрів</div>
@@ -1809,10 +1821,11 @@
               <span class="trainer-tag">TRX</span>
               <span class="trainer-tag">Силові</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=olena-dorozhovets" aria-label="Детальніше про тренера Олена Дорожовець">
           <img src="assets/trainers/olena-dorozhovets.png" alt="Олена Дорожовець — тренер бодібілдингу" width="852" height="1288" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Олена Дорожовець</div>
@@ -1821,10 +1834,11 @@
               <span class="trainer-tag">Силовий</span>
               <span class="trainer-tag">Корекція фігури</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=yuriy-sushko" aria-label="Детальніше про тренера Юрій Сушко">
           <img src="assets/trainers/yuriy-sushko.png" alt="Юрій Сушко — тренер тренажерного залу" width="916" height="1274" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Юрій Сушко</div>
@@ -1833,10 +1847,11 @@
               <span class="trainer-tag">Тренажерний зал</span>
               <span class="trainer-tag">Реабілітація</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=evgenia-havel" aria-label="Детальніше про тренера Євгенія Гавель">
           <img src="assets/trainers/evgenia-havel.png" alt="Євгенія Гавель — фітнес-тренер" width="898" height="1260" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Євгенія Гавель</div>
@@ -1845,10 +1860,11 @@
               <span class="trainer-tag">Силові</span>
               <span class="trainer-tag">Харчування</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=khrystyna-hrabar" aria-label="Детальніше про тренера Христина Грабар">
           <img src="assets/trainers/khrystyna-hrabar.png" alt="Христина Грабар — персональний тренер" width="954" height="1356" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Христина Грабар</div>
@@ -1857,10 +1873,11 @@
               <span class="trainer-tag">М'язова маса</span>
               <span class="trainer-tag">Схуднення</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=diana-sinchilova" aria-label="Детальніше про тренера Діана Сінчілова">
           <img src="assets/trainers/diana-sinchilova.png" alt="Діана Сінчілова — тренер фітнесу та стретчингу" width="902" height="1388" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Діана Сінчілова</div>
@@ -1870,10 +1887,11 @@
               <span class="trainer-tag">Стретчинг</span>
               <span class="trainer-tag">Barre</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
-        <article class="trainer-card">
+        <a class="trainer-card" href="trainer.html?slug=maria-dolgova" aria-label="Детальніше про тренера Марія Долгова">
           <img src="assets/trainers/maria-dolgova.png" alt="Марія Долгова — тренер стретчингу та Barre" width="866" height="1280" class="trainer-photo" loading="lazy" />
           <div class="trainer-info">
             <div class="trainer-name">Марія Долгова</div>
@@ -1883,8 +1901,9 @@
               <span class="trainer-tag">Barre</span>
               <span class="trainer-tag">Корекція фігури</span>
             </div>
+            <span class="trainer-more">Детальніше<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
-        </article>
+        </a>
 
       </div>
     </div>
@@ -2839,6 +2858,30 @@
         btn.textContent = 'Забрати годину в подарунок'; btn.disabled = false;
       }
     });
+  })();
+</script>
+
+<!-- Префіл форми, коли прийшли зі сторінки тренера: index.html?coach=…&dir=… -->
+<script>
+  (function () {
+    var p = new URLSearchParams(location.search);
+    var coach = p.get('coach');
+    if (!coach) return;
+    function fill() {
+      var msg = document.getElementById('message');
+      if (msg && !msg.value) msg.value = 'Хочу записатись до тренера ' + coach + '.';
+      var dir = p.get('dir');
+      var sel = document.getElementById('direction');
+      if (dir && sel) {
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].value === dir || sel.options[i].text === dir) { sel.selectedIndex = i; break; }
+        }
+      }
+      var c = document.getElementById('contact');
+      if (c) setTimeout(function () { c.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fill);
+    else fill();
   })();
 </script>
 </body>
