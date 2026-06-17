@@ -1158,6 +1158,57 @@
     @media (max-width: 900px) { .gallery-masonry { column-count: 2; } }
     @media (max-width: 560px) { .gallery-masonry { column-count: 1; } }
 
+    /* ── 3D / 360° TOUR ───────────────────────────────────── */
+    .tour-wrap { margin-top: 46px; }
+    .tour-head {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; margin-bottom: 18px; flex-wrap: wrap;
+    }
+    .tour-title {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(22px, 3.4vw, 32px); text-transform: uppercase;
+      letter-spacing: .01em; line-height: 1;
+    }
+    .tour-title .c { color: var(--cyan); }
+    .tour-live {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--pink);
+      flex-shrink: 0; box-shadow: 0 0 0 0 rgba(255,32,112,.6);
+      animation: tourPulse 2.2s infinite;
+    }
+    @keyframes tourPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(255,32,112,.55); }
+      70%  { box-shadow: 0 0 0 12px rgba(255,32,112,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,32,112,0); }
+    }
+    .tour-hint {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; color: var(--muted);
+      border: 1px solid var(--border); border-radius: 100px; padding: 7px 15px;
+    }
+    .tour-hint svg { width: 15px; height: 15px; color: var(--cyan); flex-shrink: 0; }
+    .tour-frame {
+      position: relative; border-radius: 22px; padding: 11px;
+      background: linear-gradient(135deg, rgba(92,224,216,.12), rgba(255,32,112,.09));
+      border: 1px solid rgba(92,224,216,.22);
+      box-shadow: 0 0 55px rgba(92,224,216,.13), inset 0 0 34px rgba(0,0,0,.45);
+    }
+    .tour-screen {
+      position: relative; aspect-ratio: 16 / 9; border-radius: 14px;
+      overflow: hidden; background: #000; border: 1px solid rgba(92,224,216,.2);
+    }
+    .tour-screen iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+    .tour-corner { position: absolute; width: 24px; height: 24px; z-index: 3; pointer-events: none; }
+    .tour-corner::before, .tour-corner::after { content: ''; position: absolute; background: var(--cyan); box-shadow: 0 0 10px rgba(92,224,216,.7); }
+    .tour-corner::before { width: 100%; height: 2px; }
+    .tour-corner::after  { width: 2px; height: 100%; }
+    .tour-corner.tl { top: 18px; left: 18px; }
+    .tour-corner.tr { top: 18px; right: 18px; } .tour-corner.tr::before { right: 0; } .tour-corner.tr::after { right: 0; }
+    .tour-corner.bl { bottom: 18px; left: 18px; } .tour-corner.bl::before { bottom: 0; } .tour-corner.bl::after { bottom: 0; }
+    .tour-corner.br { bottom: 18px; right: 18px; } .tour-corner.br::before { right: 0; bottom: 0; } .tour-corner.br::after { right: 0; bottom: 0; }
+    .tour-cap { margin-top: 15px; font-size: 13px; color: var(--muted); text-align: center; }
+    @media (max-width: 560px) { .tour-screen { aspect-ratio: 4 / 3; } .tour-corner { width: 18px; height: 18px; } }
+
     /* ── WHY BENTO ──────────────────────────────────────── */
     .why-bento {
       display: grid;
@@ -1687,6 +1738,30 @@
         <img src="assets/gallery/lightbox.jpg" alt="Брендований простір OPIUM" width="1135" height="1400" loading="lazy" />
       </figure>
 
+    </div>
+
+    <!-- ── 3D / 360° прогулянка залом ── -->
+    <div class="tour-wrap">
+      <div class="tour-head">
+        <h3 class="tour-title"><span class="tour-live" aria-hidden="true"></span>3D-прогулянка <span class="c">залом</span></h3>
+        <span class="tour-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Тягни, щоб озирнутись на 360°
+        </span>
+      </div>
+      <div class="tour-frame">
+        <span class="tour-corner tl" aria-hidden="true"></span>
+        <span class="tour-corner tr" aria-hidden="true"></span>
+        <span class="tour-corner bl" aria-hidden="true"></span>
+        <span class="tour-corner br" aria-hidden="true"></span>
+        <div class="tour-screen">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!4v1718200000000!6m8!1m7!1sCIABIhBROfjhpxho7FWp3ZHKECCr!2m2!1d49.8603455!2d24.0275328!3f191.68!4f0!5f0.6"
+            title="3D-прогулянка тренажерним залом Opium Fitness у Львові"
+            loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <p class="tour-cap">Прогуляйся залом Opium Fitness онлайн — роздивись простір зсередини, не виходячи з дому.</p>
     </div>
   </div>
 </section>
