@@ -3125,7 +3125,26 @@
     document.addEventListener('click', function (e) { if (!pop.hidden && !pop.contains(e.target) && !trigger.contains(e.target)) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) close(); });
 
-    window.__dtReset = function () { selDate = null; selTime = null; view = new Date(today.getFullYear(), today.getMonth(), 1); commit(); close(); };
+    function nextAvailable() {
+      var now = new Date();
+      var probe = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      for (var i = 0; i < 8; i++) {
+        var wh = workingHours(probe.getDay());
+        var start = (i === 0) ? Math.max(now.getHours() + (now.getMinutes() > 0 ? 1 : 0), wh.from) : wh.from;
+        if (start <= wh.to) return { date: new Date(probe.getFullYear(), probe.getMonth(), probe.getDate()), time: ('0' + start).slice(-2) + ':00' };
+        probe.setDate(probe.getDate() + 1);
+      }
+      return null;
+    }
+    function prefillDefault() {
+      var na = nextAvailable();
+      if (na) { selDate = na.date; selTime = na.time; view = new Date(na.date.getFullYear(), na.date.getMonth(), 1); }
+      else { selDate = null; selTime = null; }
+      commit();
+    }
+
+    prefillDefault();
+    window.__dtReset = function () { prefillDefault(); close(); };
   })();
 </script>
 
