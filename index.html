@@ -701,48 +701,48 @@
     .dt-placeholder { color: var(--muted); }
     .dt-trigger.has-val .dt-placeholder { color: var(--text); }
     .dt-pop {
-      margin-top: 8px;
-      background: #0E0E0E; border: 1px solid rgba(92,224,216,.25); border-radius: 14px; padding: 16px;
-      box-shadow: inset 0 0 0 1px rgba(92,224,216,.04), 0 0 30px rgba(92,224,216,.06);
+      position: fixed; z-index: 80; width: 296px; max-width: calc(100vw - 24px);
+      background: #0E0E0E; border: 1px solid rgba(92,224,216,.3); border-radius: 12px; padding: 12px;
+      box-shadow: 0 20px 52px rgba(0,0,0,.65), 0 0 26px rgba(92,224,216,.1);
     }
     .dt-pop[hidden] { display: none; }
-    .dt-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .dt-month { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 17px; text-transform: uppercase; letter-spacing: .03em; }
+    .dt-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 9px; }
+    .dt-month { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .03em; }
     .dt-nav {
-      width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
-      background: var(--bg-card); color: var(--text); cursor: pointer; font-size: 18px; line-height: 1;
+      width: 26px; height: 26px; border-radius: 7px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--text); cursor: pointer; font-size: 15px; line-height: 1;
       display: flex; align-items: center; justify-content: center; transition: border-color .2s, color .2s;
     }
     .dt-nav:hover:not(:disabled) { border-color: var(--cyan); color: var(--cyan); }
     .dt-nav:disabled { opacity: .3; cursor: not-allowed; }
-    .dt-weekdays { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-bottom: 6px; }
-    .dt-weekdays span { text-align: center; font-size: 11px; color: var(--muted); font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .05em; }
-    .dt-days { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
+    .dt-weekdays { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; margin-bottom: 4px; }
+    .dt-weekdays span { text-align: center; font-size: 10px; color: var(--muted); font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+    .dt-days { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
     .dt-day {
-      aspect-ratio: 1; border: 0; background: transparent; color: var(--text); border-radius: 8px;
-      cursor: pointer; font-size: 13px; font-family: 'Barlow', sans-serif; transition: background .15s, color .15s;
+      aspect-ratio: 1; border: 0; background: transparent; color: var(--text); border-radius: 7px;
+      cursor: pointer; font-size: 12px; font-family: 'Barlow', sans-serif; transition: background .15s, color .15s;
     }
     .dt-day:hover:not(:disabled):not(.sel) { background: rgba(92,224,216,.12); }
     .dt-day.sel { background: var(--cyan); color: #06201E; font-weight: 700; }
     .dt-day.empty { visibility: hidden; cursor: default; }
     .dt-day:disabled { color: rgba(107,114,128,.3); cursor: not-allowed; }
     .dt-day.today:not(.sel) { box-shadow: inset 0 0 0 1px rgba(92,224,216,.4); }
-    .dt-times { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .dt-times { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 10px; }
     .dt-times[hidden] { display: none; }
-    .dt-times-head { font-size: 12px; color: var(--muted); margin-bottom: 9px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .05em; }
-    .dt-times-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; max-height: 152px; overflow-y: auto; }
+    .dt-times-head { font-size: 11px; color: var(--muted); margin-bottom: 7px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+    .dt-times-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; max-height: 112px; overflow-y: auto; }
     .dt-time {
-      padding: 8px 0; text-align: center; border: 1px solid var(--border); background: var(--bg-card);
-      border-radius: 8px; color: var(--text); font-size: 13px; cursor: pointer; transition: border-color .15s, background .15s, color .15s;
+      padding: 6px 0; text-align: center; border: 1px solid var(--border); background: var(--bg-card);
+      border-radius: 7px; color: var(--text); font-size: 12px; cursor: pointer; transition: border-color .15s, background .15s, color .15s;
     }
     .dt-time:hover:not(.sel) { border-color: var(--cyan); color: var(--cyan); }
     .dt-time.sel { background: var(--cyan); color: #06201E; border-color: var(--cyan); font-weight: 700; }
-    .dt-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; gap: 10px; }
-    .dt-clear { background: transparent; border: 0; color: var(--muted); font-size: 13px; cursor: pointer; padding: 8px 4px; }
+    .dt-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 11px; gap: 10px; }
+    .dt-clear { background: transparent; border: 0; color: var(--muted); font-size: 12px; cursor: pointer; padding: 7px 4px; }
     .dt-clear:hover { color: var(--pink); }
     .dt-done {
-      background: var(--cyan); color: #06201E; border: 0; border-radius: 8px; padding: 9px 22px;
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 13px; cursor: pointer;
+      background: var(--cyan); color: #06201E; border: 0; border-radius: 7px; padding: 8px 20px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 12.5px; cursor: pointer;
     }
 
     .success-msg {
@@ -3089,7 +3089,7 @@
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'dt-time'; b.textContent = hh;
         if (hh === selTime) b.classList.add('sel');
-        (function (t) { b.addEventListener('click', function () { selTime = t; renderTimes(); commit(); }); })(hh);
+        (function (t) { b.addEventListener('click', function () { selTime = t; renderTimes(); commit(); positionPop(); }); })(hh);
         timesGrid.appendChild(b);
       }
     }
@@ -3097,7 +3097,7 @@
     function pickDate(dt) {
       selDate = dt;
       if (selTime) { var wh = workingHours(dt.getDay()); var h = parseInt(selTime, 10); if (h < wh.from || h > wh.to) selTime = null; }
-      renderCal(); renderTimes(); commit();
+      renderCal(); renderTimes(); commit(); positionPop();
     }
 
     function fmt() {
@@ -3114,16 +3114,29 @@
       else { label.textContent = 'Обери дату й годину'; trigger.classList.remove('has-val'); }
     }
 
-    function open() { pop.hidden = false; trigger.classList.add('active'); trigger.setAttribute('aria-expanded', 'true'); renderCal(); renderTimes(); }
+    function positionPop() {
+      if (pop.hidden) return;
+      var r = trigger.getBoundingClientRect();
+      var w = Math.min(r.width, 320);
+      pop.style.width = w + 'px';
+      pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - w - 8)) + 'px';
+      var gap = 6, h = pop.offsetHeight, vh = window.innerHeight;
+      var below = r.bottom + gap;
+      if (below + h > vh - 8 && r.top - gap - h > 8) pop.style.top = (r.top - gap - h) + 'px';
+      else pop.style.top = Math.max(8, Math.min(below, vh - h - 8)) + 'px';
+    }
+    function open() { pop.hidden = false; trigger.classList.add('active'); trigger.setAttribute('aria-expanded', 'true'); renderCal(); renderTimes(); positionPop(); }
     function close() { pop.hidden = true; trigger.classList.remove('active'); trigger.setAttribute('aria-expanded', 'false'); }
 
     trigger.addEventListener('click', function () { pop.hidden ? open() : close(); });
-    prevBtn.addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); });
-    nextBtn.addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); });
+    prevBtn.addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); positionPop(); });
+    nextBtn.addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); positionPop(); });
     doneBtn.addEventListener('click', close);
-    clearBtn.addEventListener('click', function () { selDate = null; selTime = null; commit(); renderCal(); renderTimes(); });
+    clearBtn.addEventListener('click', function () { selDate = null; selTime = null; commit(); renderCal(); renderTimes(); positionPop(); });
     document.addEventListener('click', function (e) { if (!pop.hidden && !pop.contains(e.target) && !trigger.contains(e.target)) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) close(); });
+    window.addEventListener('resize', positionPop);
+    window.addEventListener('scroll', positionPop, true);
 
     function nextAvailable() {
       var now = new Date();
