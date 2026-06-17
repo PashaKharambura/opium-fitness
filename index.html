@@ -3133,6 +3133,7 @@
     nextBtn.addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); positionPop(); });
     doneBtn.addEventListener('click', close);
     clearBtn.addEventListener('click', function () { selDate = null; selTime = null; commit(); renderCal(); renderTimes(); positionPop(); });
+    pop.addEventListener('click', function (e) { e.stopPropagation(); });
     document.addEventListener('click', function (e) { if (!pop.hidden && !pop.contains(e.target) && !trigger.contains(e.target)) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) close(); });
     window.addEventListener('resize', positionPop);
