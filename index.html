@@ -693,15 +693,17 @@
       transition: border-color .2s;
     }
     .dt-trigger:hover, .dt-trigger.active { border-color: var(--cyan); }
+    .dt-trigger:focus { outline: none; }
+    .dt-trigger:focus-visible { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(92,224,216,.22); }
     .dt-cal-ic { width: 18px; height: 18px; color: var(--cyan); flex-shrink: 0; }
     .dt-chev { width: 16px; height: 16px; color: var(--muted); margin-left: auto; transition: transform .2s; }
     .dt-trigger.active .dt-chev { transform: rotate(180deg); }
     .dt-placeholder { color: var(--muted); }
     .dt-trigger.has-val .dt-placeholder { color: var(--text); }
     .dt-pop {
-      position: absolute; z-index: 40; left: 0; right: 0; margin-top: 8px;
+      margin-top: 8px;
       background: #0E0E0E; border: 1px solid rgba(92,224,216,.25); border-radius: 14px; padding: 16px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.6), 0 0 30px rgba(92,224,216,.08);
+      box-shadow: inset 0 0 0 1px rgba(92,224,216,.04), 0 0 30px rgba(92,224,216,.06);
     }
     .dt-pop[hidden] { display: none; }
     .dt-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
