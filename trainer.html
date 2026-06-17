@@ -122,6 +122,16 @@
     .t-bio { font-size: 16px; color: #C9CDD3; line-height: 1.75; margin-bottom: 18px; max-width: 560px; }
     .t-context { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; max-width: 560px; }
     .t-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .t-book {
+      margin-top: 4px; padding: 20px 22px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(92,224,216,.1), rgba(255,32,112,.07));
+      border: 1px solid rgba(92,224,216,.24);
+      display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    }
+    .t-book-txt { flex: 1; min-width: 200px; }
+    .t-book-txt strong { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 800; text-transform: uppercase; letter-spacing: .01em; margin-bottom: 3px; }
+    .t-book-txt span { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .t-book .btn { flex-shrink: 0; }
 
     /* ── DIRECTIONS ── */
     .t-section { padding: 12px 0 8px; }
@@ -449,9 +459,9 @@
             '<div class="t-tags">' + tagsHtml(t.tags) + "</div>" +
             '<p class="t-bio">' + esc(t.bio) + "</p>" +
             '<p class="t-context">Проводить тренування в Opium Fitness — тренажерному залі та фітнес-клубі у Львові (вул. Шевченка, 31А). Перше заняття — безкоштовне, без передоплати.</p>' +
-            '<div class="t-actions">' +
+            '<div class="t-book">' +
+              '<div class="t-book-txt"><strong>Перше заняття — безкоштовно</strong><span>Залиш заявку — менеджер підбере зручний час саме з цим тренером.</span></div>' +
               '<a href="' + bookHref + '" class="btn btn-primary">Записатись на тренування</a>' +
-              '<a href="index.html#trainers" class="btn btn-outline">← Усі тренери</a>' +
             "</div>" +
           "</div>" +
         "</section>" +
@@ -459,15 +469,6 @@
         '<section class="t-section" aria-label="Напрями тренувань">' +
           '<h2 class="t-section-h">Напрями <span class="c">тренувань</span></h2>' +
           '<div class="t-dirs">' + dirsHtml(t.tags) + "</div>" +
-        "</section>" +
-
-        '<section class="t-cta">' +
-          "<h3>Записатись до тренера " + esc(t.name) + "</h3>" +
-          "<p>Залиш заявку — менеджер підбере зручний час. Перше заняття безкоштовне.</p>" +
-          '<div class="actions">' +
-            '<a href="' + bookHref + '" class="btn btn-primary">Залишити заявку</a>' +
-            '<a href="https://www.instagram.com/opiumfitness.ua/" target="_blank" rel="noopener" class="btn btn-outline">Написати в Instagram</a>' +
-          "</div>" +
         "</section>" +
 
         '<section class="t-others" aria-label="Інші тренери">' +
